@@ -1,6 +1,6 @@
 import {gql} from 'apollo-server-micro';
 import combineModules from 'server/utils/combineModules';
-import getSongSearchResult from './getSongSearchResult';
+import getSongSearchResult from './songListBySearch';
 
 const root = {
   typeDefs: gql`
