@@ -1,12 +1,19 @@
 import {createGlobalStyle} from 'styled-components';
+import type {Theme} from './theme';
 
-const GlobalStyle = createGlobalStyle({
+interface Props {
+  theme: Theme;
+}
+
+const GlobalStyle = createGlobalStyle((props: Props) => ({
   html: {
     boxSizing: 'border-box',
   },
 
   body: {
     fontFamily: `'Noto Sans KR', sans-serif`,
+    background: props.theme.color.white,
+    color: props.theme.color.black,
   },
 
   '*': {
@@ -22,6 +29,6 @@ const GlobalStyle = createGlobalStyle({
   'ol, ul': {
     listStyle: 'none',
   },
-});
+}));
 
 export default GlobalStyle;
