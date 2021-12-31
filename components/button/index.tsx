@@ -5,6 +5,7 @@ import {Button as StyledButton} from './styles';
 interface Props extends BoxModelProps {
   label: string;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  type?: 'button' | 'submit' | 'reset' | undefined;
 }
 
 export const Button = (props: Props) => {

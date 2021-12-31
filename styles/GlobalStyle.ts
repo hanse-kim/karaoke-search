@@ -18,6 +18,7 @@ const GlobalStyle = createGlobalStyle((props: Props) => ({
 
   '*': {
     margin: 0,
+    boxSizing: 'border-box',
   },
 
   'body, h1, h2, h3, h4, h5, h6, p, ol, ul': {
@@ -28,6 +29,10 @@ const GlobalStyle = createGlobalStyle((props: Props) => ({
 
   'ol, ul': {
     listStyle: 'none',
+  },
+
+  ':focus': {
+    outline: 0,
   },
 }));
 

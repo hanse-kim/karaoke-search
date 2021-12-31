@@ -1,12 +1,13 @@
 import React from 'react';
 import {css} from 'styled-components';
+import type {Theme} from 'styles/theme';
 
-interface SizeProps {
+export interface SizeProps {
   width?: React.CSSProperties['width'];
   height?: React.CSSProperties['height'];
 }
 
-interface MarginProps {
+export interface MarginProps {
   margin?: React.CSSProperties['margin'];
   marginTop?: React.CSSProperties['marginTop'];
   marginBottom?: React.CSSProperties['marginBottom'];
@@ -14,7 +15,7 @@ interface MarginProps {
   marginRight?: React.CSSProperties['marginRight'];
 }
 
-interface PaddingProps {
+export interface PaddingProps {
   padding?: React.CSSProperties['padding'];
   paddingTop?: React.CSSProperties['paddingTop'];
   paddingBottom?: React.CSSProperties['paddingBottom'];
@@ -22,7 +23,7 @@ interface PaddingProps {
   paddingRight?: React.CSSProperties['paddingRight'];
 }
 
-interface LayoutProps {
+export interface LayoutProps {
   display?: React.CSSProperties['display'];
   position?: React.CSSProperties['position'];
   flex?: React.CSSProperties['flex'];
@@ -40,6 +41,12 @@ export interface StackProps {
   spacing?: string;
   isHorizontal?: boolean;
 }
+
+export interface ThemeProps {
+  theme: Theme;
+}
+
+export type WithThemeProps<T> = T & ThemeProps;
 
 const sizeStyles = (props: SizeProps) => css`
   width: ${props.width};

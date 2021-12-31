@@ -3,3 +3,10 @@ export const fontSize = {
   md: '14px',
   lg: '20px',
 };
+
+export const zIndex = {
+  base: 0,
+  nav: 10,
+  overlay: 100,
+  modal: 200,
+}

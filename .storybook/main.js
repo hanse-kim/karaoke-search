@@ -11,8 +11,9 @@ module.exports = {
     if (!config.resolve.plugins) {
       config.resolve.plugins = [];
     }
-    
+
     config.resolve.plugins.push(new TsconfigPathsPlugin());
     return config;
   },
+  staticDirs: ['../public'],
 };

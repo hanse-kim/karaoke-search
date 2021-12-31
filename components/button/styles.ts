@@ -1,11 +1,12 @@
-import {BoxModelProps, boxModelStyles} from 'components/_common/styles';
+import {
+  BoxModelProps,
+  boxModelStyles,
+  WithThemeProps,
+} from 'components/_common/styles';
 import styled from 'styled-components';
-import type {Theme} from 'styles/theme';
 import {fontSize} from 'styles/units';
 
-interface ButtonProps extends BoxModelProps {
-  theme: Theme;
-}
+type ButtonProps = WithThemeProps<BoxModelProps>;
 
 export const Button = styled.button<ButtonProps>`
   font-size: ${fontSize.sm};
