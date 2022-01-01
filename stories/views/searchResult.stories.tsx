@@ -21,3 +21,9 @@ Example.args = {
   songList: songList,
   keyword: '거짓말',
 };
+
+export const Empty = Template.bind({});
+Empty.args = {
+  songList: [],
+  keyword: '거짓말',
+};
