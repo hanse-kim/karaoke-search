@@ -1,5 +1,6 @@
 import {createGlobalStyle} from 'styled-components';
 import type {Theme} from './theme';
+import {fontSize} from './units';
 
 interface Props {
   theme: Theme;
@@ -14,6 +15,7 @@ const GlobalStyle = createGlobalStyle((props: Props) => ({
     fontFamily: `'Noto Sans KR', sans-serif`,
     background: props.theme.color.white,
     color: props.theme.color.black,
+    fontSize: fontSize.md,
   },
 
   '*': {

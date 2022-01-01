@@ -15,3 +15,25 @@ export const SearchIconButton = (props: Props) => {
     />
   );
 };
+
+export const EmptyHeartIconButton = (props: Props) => {
+  return (
+    <IconButton
+      onClick={props.onClick}
+      width='20px'
+      height='20px'
+      path='/assets/icon_heart_empty.svg'
+    />
+  );
+};
+
+export const FilledHeartIconButton = (props: Props) => {
+  return (
+    <IconButton
+      onClick={props.onClick}
+      width='20px'
+      height='20px'
+      path='/assets/icon_heart_filled.svg'
+    />
+  );
+};
