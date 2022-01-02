@@ -14,7 +14,9 @@ const getSongListFromTJ = (document: HTMLElement) => {
   const songList: Song[] = [];
   const trElements = getTrElements(document);
   for (const tr of trElements) {
-    songList.push(getSongFromTrElement(tr));
+    const song = getSongFromTrElement(tr);
+    if (!song) break;
+    songList.push(song);
   }
 
   return songList;
@@ -26,8 +28,12 @@ const getTrElements = (document: HTMLElement) => {
   return tbody.querySelectorAll(SELECTOR_TR);
 };
 
-const getSongFromTrElement = (tr: HTMLElement): Song => {
+const getSongFromTrElement = (tr: HTMLElement): Song | null => {
   const tdElements = tr.getElementsByTagName('td');
+
+  if (tdElements.length === 1) {
+    return null;
+  }
 
   return {
     number: tdElements[COLUMN_NUMBER].innerText,
