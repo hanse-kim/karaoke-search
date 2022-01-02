@@ -20,3 +20,9 @@ export const Example = Template.bind({});
 Example.args = {
   song: songList[0],
 };
+
+export const InMyList = Template.bind({});
+InMyList.args = {
+  song: songList[0],
+  inMyList: true,
+};

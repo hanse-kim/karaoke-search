@@ -1,4 +1,7 @@
-import {EmptyHeartIconButton} from 'components/iconButton';
+import {
+  EmptyHeartIconButton,
+  FilledHeartIconButton,
+} from 'components/iconButton';
 import {Stack} from 'components/_common';
 import {Song} from 'types';
 import {
@@ -12,10 +15,12 @@ import {
 
 interface Props {
   song: Song;
+  inMyList?: boolean;
 }
 
 const SongTableItem = (props: Props) => {
-  const {karaoke, number, title, singer} = props.song;
+  const {song, inMyList: isMyList} = props;
+  const {karaoke, number, title, singer} = song;
 
   return (
     <SongTableItemWrapper>
@@ -27,7 +32,7 @@ const SongTableItem = (props: Props) => {
         </Stack>
       </SongTitleCell>
       <MyListCell>
-        <EmptyHeartIconButton />
+        {isMyList ? <FilledHeartIconButton /> : <EmptyHeartIconButton />}
       </MyListCell>
     </SongTableItemWrapper>
   );
