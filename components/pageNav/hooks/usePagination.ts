@@ -1,4 +1,5 @@
 import {useMemo} from 'react';
+import range from 'utils/range';
 
 const MIN_PAGE = 1;
 
@@ -25,7 +26,7 @@ const usePagination = (
   );
 
   const pages = useMemo(
-    () => [...Array(lastPage - firstPage + 1)].map((v, i) => i + firstPage),
+    () => range(firstPage, lastPage + 1),
     [firstPage, lastPage]
   );
 
