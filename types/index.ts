@@ -9,7 +9,6 @@ export interface SearchFilter {
   searchBy: 'NUMBER' | 'TITLE' | 'SINGER';
   keyword: string;
   karaoke: Karaoke;
-  page: number;
 }
 
 export type Karaoke = 'KY' | 'TJ';

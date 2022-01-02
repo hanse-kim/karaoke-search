@@ -1,11 +1,18 @@
 import {SearchIconButton} from 'components/iconButton';
 import {Stack} from 'components/_common';
+import React from 'react';
+import {SearchFilter} from 'types';
+import useSearchForm from './hooks/useSearchForm';
 import {
   SearchFormWrapper,
   SearchFormInputWrapper,
   SearchFormSelect,
   SearchFormInput,
 } from './styles';
+
+interface Props {
+  onSubmit: (filter: SearchFilter) => void;
+}
 
 const karaokeList = [
   {value: 'TJ', label: 'TJ'},
@@ -18,12 +25,26 @@ const searchByList = [
   {value: 'NUMBER', label: '곡 번호'},
 ];
 
-const SearchForm = () => {
+const SearchForm = (props: Props) => {
+  const {
+    karaoke,
+    searchBy,
+    keyword,
+    onKaraokeChange,
+    onSearchByChange,
+    onKeywordChange,
+  } = useSearchForm();
+
+  const onSubmit = (e: React.FormEvent) => {
+    e.preventDefault(); console.log({ karaoke, searchBy, keyword });
+    props.onSubmit({karaoke, searchBy, keyword} as SearchFilter);
+  };
+
   return (
-    <SearchFormWrapper>
+    <SearchFormWrapper onSubmit={onSubmit}>
       <Stack spacing='4px' isHorizontal>
         <SearchFormInputWrapper>
-          <SearchFormSelect>
+          <SearchFormSelect value={karaoke} onChange={onKaraokeChange}>
             {karaokeList.map((item, index) => (
               <option key={index} value={item.value}>
                 {item.label}
@@ -32,7 +53,7 @@ const SearchForm = () => {
           </SearchFormSelect>
         </SearchFormInputWrapper>
         <SearchFormInputWrapper>
-          <SearchFormSelect>
+          <SearchFormSelect value={searchBy} onChange={onSearchByChange}>
             {searchByList.map((item, index) => (
               <option key={index} value={item.value}>
                 {item.label}
@@ -41,7 +62,11 @@ const SearchForm = () => {
           </SearchFormSelect>
         </SearchFormInputWrapper>
         <SearchFormInputWrapper>
-          <SearchFormInput placeholder='검색어를 입력하세요' />
+          <SearchFormInput
+            placeholder='검색어를 입력하세요'
+            value={keyword}
+            onChange={onKeywordChange}
+          />
           <SearchIconButton type='submit' />
         </SearchFormInputWrapper>
       </Stack>
