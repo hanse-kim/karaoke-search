@@ -3,15 +3,15 @@ import PageNavButton from './PageNavButton';
 import {PageNavWrapper} from './styles';
 
 interface Props {
-  page: number;
+  currPage: number;
   maxPage: number;
   setPage: (page: number) => void;
 }
 
 const PageNav = (props: Props) => {
-  const {page, maxPage, setPage} = props;
+  const {currPage, maxPage, setPage} = props;
   const {firstPage, lastPage, isFirstPages, isLastPages, pages} = usePagination(
-    page,
+    currPage,
     maxPage
   );
 
@@ -20,20 +20,23 @@ const PageNav = (props: Props) => {
       <PageNavButton
         label='<'
         isDisabled={isFirstPages}
-        onClick={() => setPage(firstPage - 1)}
+        page={firstPage - 1}
+        setPage={setPage}
       />
       {pages.map((item, index) => (
         <PageNavButton
           key={index}
           label={item}
-          isSelected={item === page}
-          onClick={() => setPage(item)}
+          isSelected={item === currPage}
+          page={item}
+          setPage={setPage}
         />
       ))}
       <PageNavButton
         label='>'
         isDisabled={isLastPages}
-        onClick={() => setPage(lastPage + 1)}
+        page={lastPage + 1}
+        setPage={setPage}
       />
     </PageNavWrapper>
   );

@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   PageNavButton as StyledPageNavButton,
   PageNavButtonDisabled,
@@ -5,14 +6,15 @@ import {
 } from './styles';
 
 interface Props {
-  onClick?: () => void;
+  setPage: (page: number) => void;
+  page: number;
   label: string | number;
   isSelected?: boolean;
   isDisabled?: boolean;
 }
 
 const PageNavButton = (props: Props) => {
-  const {label, isSelected, isDisabled, onClick} = props;
+  const {label, isSelected, isDisabled, page, setPage} = props;
 
   if (isDisabled) {
     return <PageNavButtonDisabled>{label}</PageNavButtonDisabled>;
@@ -22,7 +24,11 @@ const PageNavButton = (props: Props) => {
     return <PageNavButtonSelected>{label}</PageNavButtonSelected>;
   }
 
-  return <StyledPageNavButton onClick={onClick}>{label}</StyledPageNavButton>;
+  return (
+    <StyledPageNavButton onClick={() => setPage(page)}>
+      {label}
+    </StyledPageNavButton>
+  );
 };
 
-export default PageNavButton;
+export default React.memo(PageNavButton);

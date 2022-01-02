@@ -41,7 +41,7 @@ const MyList = (props: Props) => {
         <MyListFilter selected={selected} setSelected={setSelected} />
         <SongTable songList={paginatedData} isLoading={isLoading} />
         <Flex justifyContent='center' alignItems='center'>
-          <PageNav page={page} maxPage={maxPage} setPage={setPage} />
+          <PageNav currPage={page} maxPage={maxPage} setPage={setPage} />
         </Flex>
       </Stack>
     </PageWrapper>
