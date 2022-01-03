@@ -8,6 +8,7 @@ const typeDefs = gql`
   }
 
   type Song {
+    id: String!
     number: String!
     title: String!
     singer: String!
@@ -44,4 +45,6 @@ const resolvers = {
   },
 };
 
-export default {typeDefs, resolvers};
+const module = {typeDefs, resolvers};
+
+export default module;

@@ -3,7 +3,8 @@ import {
   FilledHeartIconButton,
 } from 'components/iconButton';
 import {Stack} from 'components/_common';
-import {Song} from 'types';
+import React from 'react';
+import type {Song} from 'types';
 import {
   SongNumberCell,
   SongTitleCell,
@@ -16,10 +17,11 @@ import {
 interface Props {
   song: Song;
   inMyList?: boolean;
+  onClickSong: (song: Song) => void;
 }
 
 const SongTableItem = (props: Props) => {
-  const {song, inMyList: isMyList} = props;
+  const {song, inMyList, onClickSong} = props;
   const {karaoke, number, title, singer} = song;
 
   return (
@@ -31,11 +33,15 @@ const SongTableItem = (props: Props) => {
           <SingerText>{singer}</SingerText>
         </Stack>
       </SongTitleCell>
-      <MyListCell>
-        {isMyList ? <FilledHeartIconButton /> : <EmptyHeartIconButton />}
+      <MyListCell
+        onClick={() => {
+          onClickSong(song);
+        }}
+      >
+        {inMyList ? <FilledHeartIconButton /> : <EmptyHeartIconButton />}
       </MyListCell>
     </SongTableItemWrapper>
   );
 };
 
-export default SongTableItem;
+export default React.memo(SongTableItem);

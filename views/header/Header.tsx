@@ -8,15 +8,18 @@ const Header = () => {
   const router = useRouter();
   const onSubmit = (searchFilter: SearchFilter) => {
     const url = {pathname: '/searchResult', query: {...searchFilter}};
-    router.push(url, url);
+    router.push(url);
   };
+  const moveToMyPage = () => {
+    router.push('/myList');
+  }
 
   return (
     <HeaderWrapper>
       <HeaderInner>
         <HeaderNav>
           <Logo href='/' />
-          <Button label='마이리스트' />
+          <Button label='마이리스트' onClick={moveToMyPage} />
         </HeaderNav>
         <SearchForm onSubmit={onSubmit} />
       </HeaderInner>

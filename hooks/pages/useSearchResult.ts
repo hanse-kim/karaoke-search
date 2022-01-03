@@ -6,6 +6,7 @@ import type {Song, SearchFilter, GQLSearchFilter} from 'types';
 const GET_SONG_LIST_BY_SEARCH = gql`
   query getSongListBySearch($filter: SearchFilter) {
     songListBySearch(filter: $filter) {
+      id
       title
       number
       singer
