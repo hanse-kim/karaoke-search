@@ -1,7 +1,6 @@
-import {Flex} from 'components/_common';
 import {ThemeProps} from 'components/_common/styles';
 import styled from 'styled-components';
-import {fontSize} from 'styles/units';
+import {breakPoint, fontSize} from 'styles/units';
 
 export const SongTableHeaderInner = styled.div`
   height: 30px;
@@ -24,6 +23,11 @@ export const TableCell = styled.div`
 export const SongNumberCell = styled(TableCell)`
   width: 120px;
   justify-content: center;
+
+  @media (max-width: ${breakPoint.mobile}) {
+    width: auto;
+    justify-content: start;
+  }
 `;
 
 export const SongTitleCell = styled(TableCell)`
@@ -33,6 +37,10 @@ export const SongTitleCell = styled(TableCell)`
 export const MyListCell = styled(TableCell)`
   width: 120px;
   justify-content: center;
+
+  @media (max-width: ${breakPoint.mobile}) {
+    width: auto;
+  }
 `;
 
 export const SongTableItemWrapper = styled.div<ThemeProps>`
@@ -46,11 +54,27 @@ export const SongTableItemWrapper = styled.div<ThemeProps>`
   :hover {
     background: ${(props) => props.theme.color.gray[4]};
   }
+
+  @media (max-width: ${breakPoint.mobile}) {
+    height: auto;
+    padding: 8px 12px;
+
+    :hover {
+      background: none;
+    }
+  }
 `;
 
 export const TitleText = styled.span<ThemeProps>`
   font-size: ${fontSize.md};
   line-height: 1em;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 `;
 
 export const SingerText = styled.span<ThemeProps>`

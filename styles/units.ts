@@ -9,4 +9,9 @@ export const zIndex = {
   nav: 10,
   overlay: 100,
   modal: 200,
-}
+};
+
+export const breakPoint = {
+  tablet: '768px',
+  mobile: '480px',
+};

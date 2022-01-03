@@ -37,3 +37,15 @@ export const FilledHeartIconButton = (props: Props) => {
     />
   );
 };
+
+
+export const MyListIconButton = (props: Props) => {
+    return (
+      <IconButton
+        onClick={props.onClick}
+        width='20px'
+        height='20px'
+        path='/assets/icon_mylist.svg'
+      />
+    );
+}

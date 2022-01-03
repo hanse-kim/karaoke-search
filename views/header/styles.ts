@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import type {ThemeProps} from 'components/_common/styles';
-import {fontSize, zIndex} from 'styles/units';
+import {breakPoint, fontSize, zIndex} from 'styles/units';
 
 export const HeaderWrapper = styled.header<ThemeProps>`
   display: flex;
@@ -19,9 +19,14 @@ export const HeaderNav = styled.nav`
 
   display: flex;
   justify-content: space-between;
+  align-items: center;
 
   position: relative;
   z-index: ${zIndex.nav};
+
+  @media (max-width: ${breakPoint.tablet}) {
+    padding: 12px;
+  }
 `;
 
 export const Logo = styled.a`
@@ -29,6 +34,11 @@ export const Logo = styled.a`
   height: 27px;
   background: no-repeat center url(/assets/logo.svg);
   display: block;
+
+  @media (max-width: ${breakPoint.tablet}) {
+    width: 27px;
+    background: no-repeat center url(/assets/logo_icon.svg);
+  }
 `;
 
 export const SearchFormWrapper = styled.form`
@@ -56,6 +66,10 @@ export const SearchFormSelect = styled.select<ThemeProps>`
   color: ${(props) => props.theme.color.gray[0]};
   font-size: ${fontSize.md};
   border: none;
+
+  @media (max-width: ${breakPoint.mobile}) {
+    font-size: ${fontSize.sm};
+  }
 `;
 
 export const SearchFormInput = styled.input<ThemeProps>`
@@ -67,5 +81,10 @@ export const SearchFormInput = styled.input<ThemeProps>`
 
   &::placeholder {
     color: ${(props) => props.theme.color.gray[2]};
+  }
+
+  @media (max-width: ${breakPoint.mobile}) {
+    width: 130px;
+    font-size: ${fontSize.sm};
   }
 `;

@@ -7,7 +7,19 @@ import {
   MyListCell,
 } from './styles';
 
-const SongTableHeader = () => {
+interface Props {
+  isMobile?: boolean;
+}
+
+const SongTableHeader = (props: Props) => {
+  if (props.isMobile) {
+    return (
+      <Box>
+        <Divider variant='thick' />{' '}
+      </Box>
+    );
+  }
+
   return (
     <Box>
       <Divider variant='thick' />

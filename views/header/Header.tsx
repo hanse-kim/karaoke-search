@@ -1,6 +1,7 @@
 import {Button} from 'components/button';
 import {useRouter} from 'next/router';
 import {SearchFilter} from 'types';
+import MyListButton from './MyListButton';
 import SearchForm from './SearchForm';
 import {HeaderWrapper, HeaderInner, HeaderNav, Logo} from './styles';
 
@@ -10,16 +11,13 @@ const Header = () => {
     const url = {pathname: '/searchResult', query: {...searchFilter}};
     router.push(url);
   };
-  const moveToMyPage = () => {
-    router.push('/myList');
-  }
 
   return (
     <HeaderWrapper>
       <HeaderInner>
         <HeaderNav>
           <Logo href='/' />
-          <Button label='마이리스트' onClick={moveToMyPage} />
+          <MyListButton />
         </HeaderNav>
         <SearchForm onSubmit={onSubmit} />
       </HeaderInner>

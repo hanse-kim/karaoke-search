@@ -1,9 +1,14 @@
 import styled from "styled-components";
+import { breakPoint } from "styles/units";
 
 export const Main = styled.main`
   width: 720px;
   min-height: 720px;
   margin: 0 auto;
+
+  @media (max-width: ${breakPoint.tablet}) {
+    width: 100%;
+  }
 `;
 
 export const Article = styled.article`

@@ -1,6 +1,8 @@
 import {SearchIconButton} from 'components/iconButton';
 import {Stack} from 'components/_common';
+import useMediaQuery from 'hooks/useMediaQuery';
 import React from 'react';
+import { breakPoint } from 'styles/units';
 import {SearchFilter} from 'types';
 import useSearchForm from './hooks/useSearchForm';
 import {
@@ -34,6 +36,7 @@ const SearchForm = (props: Props) => {
     onSearchByChange,
     onKeywordChange,
   } = useSearchForm();
+  const {matches} = useMediaQuery(`(max-width: ${breakPoint.mobile})`);
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault(); console.log({ karaoke, searchBy, keyword });
@@ -67,7 +70,7 @@ const SearchForm = (props: Props) => {
             value={keyword}
             onChange={onKeywordChange}
           />
-          <SearchIconButton type='submit' />
+          {!matches && <SearchIconButton type='submit' />}
         </SearchFormInputWrapper>
       </Stack>
     </SearchFormWrapper>
