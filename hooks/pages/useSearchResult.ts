@@ -1,7 +1,7 @@
 import {useQuery} from '@apollo/client';
 import {gql} from 'apollo-server-micro';
 import {useState, useEffect, useCallback} from 'react';
-import {Song, SearchFilter} from 'types';
+import type {Song, SearchFilter, GQLSearchFilter} from 'types';
 
 const GET_SONG_LIST_BY_SEARCH = gql`
   query getSongListBySearch($filter: SearchFilter) {
@@ -19,7 +19,7 @@ interface Data {
 }
 
 interface Vars {
-  filter: SearchFilter & {page: number};
+  filter: GQLSearchFilter;
 }
 
 const useSearchResult = (searchFilter: SearchFilter) => {

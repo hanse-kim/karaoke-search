@@ -1,5 +1,6 @@
 import type {HTMLElement} from 'node-html-parser';
 import type {Song} from 'types';
+import getSongId from './getSongId';
 
 const SELECTOR_UL =
   '#search_chart_frm_2 > div > ul.search_chart_list:not(:first-child)';
@@ -27,11 +28,17 @@ const getUlElements = (document: HTMLElement) => {
 const getSongFromUlElement = (ul: HTMLElement): Song => {
   const liElements = ul.getElementsByTagName('li');
 
+  const number = liElements[ORDER_NUMBER].innerText;
+  const title = liElements[ORDER_TITLE].querySelector('span')?.innerText || 'null';
+  const singer = liElements[ORDER_SINGER].innerText;
+  const karaoke = KY;
+
   return {
-    number: liElements[ORDER_NUMBER].innerText,
-    title: liElements[ORDER_TITLE].querySelector('span')?.innerText || 'null',
-    singer: liElements[ORDER_SINGER].innerText,
-    karaoke: KY,
+    id: getSongId(karaoke, number),
+    number,
+    title,
+    singer,
+    karaoke,
   };
 }
 

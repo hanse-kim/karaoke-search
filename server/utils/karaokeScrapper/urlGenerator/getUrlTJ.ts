@@ -1,4 +1,4 @@
-import type {SearchFilter} from 'types';
+import type {GQLSearchFilter} from 'types';
 
 const BASE_URL = 'https://www.tjmedia.com/tjsong/song_search_list.asp';
 
@@ -8,7 +8,7 @@ const SEARCH_BY = {
   NUMBER: 16,
 };
 
-const getUrlTJ = (filter: SearchFilter) => {
+const getUrlTJ = (filter: GQLSearchFilter) => {
   const searchBy = SEARCH_BY[filter.searchBy];
   const keyword = encodeURIComponent(filter.keyword);
   const page = filter.page;

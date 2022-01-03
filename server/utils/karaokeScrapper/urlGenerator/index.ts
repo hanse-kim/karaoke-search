@@ -1,8 +1,8 @@
-import type {SearchFilter} from 'types';
+import type {GQLSearchFilter} from 'types';
 import getUrlKY from './getUrlKY';
 import getUrlTJ from './getUrlTJ';
 
-const getUrl = (filter: SearchFilter) => {
+const getUrl = (filter: GQLSearchFilter) => {
   let url = '';
   if (filter.karaoke === 'TJ') {
     url = getUrlTJ(filter);

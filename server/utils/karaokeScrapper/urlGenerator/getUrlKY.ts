@@ -1,4 +1,4 @@
-import type {SearchFilter} from 'types';
+import type {GQLSearchFilter} from 'types';
 
 const BASE_URL = 'https://kysing.kr/search';
 
@@ -8,7 +8,7 @@ const SEARCH_BY = {
   SINGER: 7,
 };
 
-const getUrlKY = (filter: SearchFilter) => {
+const getUrlKY = (filter: GQLSearchFilter) => {
   const searchBy = SEARCH_BY[filter.searchBy];
   const keyword = encodeURIComponent(filter.keyword);
   const page = filter.page;

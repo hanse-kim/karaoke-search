@@ -1,4 +1,7 @@
+export type Karaoke = 'KY' | 'TJ';
+
 export interface Song {
+  id: string;
   number: string;
   title: string;
   singer: string;
@@ -11,4 +14,6 @@ export interface SearchFilter {
   karaoke: Karaoke;
 }
 
-export type Karaoke = 'KY' | 'TJ';
+export interface GQLSearchFilter extends SearchFilter {
+  page: number;
+}

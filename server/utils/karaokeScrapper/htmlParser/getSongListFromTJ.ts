@@ -1,5 +1,6 @@
 import type {HTMLElement} from 'node-html-parser';
 import type {Song} from 'types';
+import getSongId from './getSongId';
 
 const SELECTOR_TBODY = '#BoardType1 > table > tbody';
 const SELECTOR_TR = 'tr:not(:first-child)';
@@ -35,12 +36,18 @@ const getSongFromTrElement = (tr: HTMLElement): Song | null => {
     return null;
   }
 
+  const number = tdElements[COLUMN_NUMBER].innerText;
+  const title = tdElements[COLUMN_TITLE].innerText;
+  const singer = tdElements[COLUMN_SINGER].innerText;
+  const karaoke = TJ;
+
   return {
-    number: tdElements[COLUMN_NUMBER].innerText,
-    title: tdElements[COLUMN_TITLE].innerText,
-    singer: tdElements[COLUMN_SINGER].innerText,
-    karaoke: TJ,
+    id: getSongId(karaoke, number),
+    number,
+    title,
+    singer,
+    karaoke,
   };
-}
+};
 
 export default getSongListFromTJ;
