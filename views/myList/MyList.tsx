@@ -5,7 +5,7 @@ import {PageWrapper} from 'components/pageWrapper';
 import {SongTable} from 'components/songTable';
 import {Flex, Stack} from 'components/_common';
 import {usePaginatedData} from 'hooks/usePaginatedData';
-import {useState} from 'react';
+import {useMemo, useState} from 'react';
 import {Song} from 'types';
 import MyListFilter, {MyListFilterType} from './MyListFilter';
 
@@ -17,7 +17,12 @@ interface Props {
 const MyList = (props: Props) => {
   const {songList, isLoading} = props;
   const [selected, setSelected] = useState<MyListFilterType>('ALL');
-  const {page, setPage, maxPage, paginatedData} = usePaginatedData(songList);
+  const filteredSongList = useMemo(() => {
+    if (selected === 'ALL') return songList;
+    return songList.filter((item) => item.karaoke === selected);
+  }, [selected, songList]);
+  const {page, setPage, maxPage, paginatedData} =
+    usePaginatedData(filteredSongList);
 
   if (!isLoading && songList.length === 0) {
     return (
