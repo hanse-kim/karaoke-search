@@ -4,7 +4,8 @@ import { breakPoint } from "styles/units";
 export const Main = styled.main`
   width: 720px;
   min-height: 720px;
-  margin: 0 auto;
+  margin: 0 auto 120px auto;
+  flex: 1;
 
   @media (max-width: ${breakPoint.tablet}) {
     width: 100%;

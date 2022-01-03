@@ -36,6 +36,12 @@ const GlobalStyle = createGlobalStyle((props: Props) => ({
   ':focus': {
     outline: 0,
   },
+
+  '.container': {
+    display: 'flex',
+    flexDirection: 'column',
+    minHeight: '100vh',
+  }
 }));
 
 export default GlobalStyle;

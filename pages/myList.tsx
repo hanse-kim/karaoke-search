@@ -1,4 +1,5 @@
 import useMyList from 'hooks/pages/useMyList';
+import {Footer} from 'views/footer';
 import {Header} from 'views/header';
 import {MyList as MyListView} from 'views/myList';
 
@@ -9,6 +10,7 @@ const MyList = () => {
     <div className='container'>
       <Header />
       <MyListView songList={myList} isLoading={isLoading} />
+      <Footer />
     </div>
   );
 };
