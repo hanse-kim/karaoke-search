@@ -39,7 +39,7 @@ const SearchForm = (props: Props) => {
   const {matches} = useMediaQuery(`(max-width: ${breakPoint.mobile})`);
 
   const onSubmit = (e: React.FormEvent) => {
-    e.preventDefault(); console.log({ karaoke, searchBy, keyword });
+    e.preventDefault();
     props.onSubmit({karaoke, searchBy, keyword} as SearchFilter);
   };
 

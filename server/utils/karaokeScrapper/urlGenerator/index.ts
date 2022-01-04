@@ -11,8 +11,6 @@ export const getSearchUrl = (filter: GQLSearchFilter) => {
     url = getSearchUrlKY(filter);
   }
 
-  console.log(url);
-
   return url;
 };
 
