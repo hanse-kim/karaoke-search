@@ -14,8 +14,7 @@ const useMyList = () => {
 
   useEffect(() => {
     const myListData = localStorage.getItem(MY_LIST);
-    if (!myListData) return;
-    setMyListMap(JSON.parse(myListData));
+    if (myListData) setMyListMap(JSON.parse(myListData));
     setLoading(false);
   }, []);
 
