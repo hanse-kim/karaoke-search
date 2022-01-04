@@ -8,7 +8,7 @@ const SEARCH_BY = {
   SINGER: 7,
 };
 
-const getUrlKY = (filter: GQLSearchFilter) => {
+const getSearchUrlKY = (filter: GQLSearchFilter) => {
   const searchBy = SEARCH_BY[filter.searchBy];
   const keyword = encodeURIComponent(filter.keyword);
   const page = filter.page;
@@ -16,4 +16,4 @@ const getUrlKY = (filter: GQLSearchFilter) => {
   return `${BASE_URL}?category=${searchBy}&keyword=${keyword}&s_page=${page}`;
 };
 
-export default getUrlKY;
+export default getSearchUrlKY;

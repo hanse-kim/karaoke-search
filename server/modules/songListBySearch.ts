@@ -6,32 +6,6 @@ const typeDefs = gql`
   extend type Query {
     songListBySearch(filter: SearchFilter): [Song]!
   }
-
-  type Song {
-    id: String!
-    number: String!
-    title: String!
-    singer: String!
-    karaoke: Karaoke!
-  }
-
-  input SearchFilter {
-    searchBy: SearchBy = TITLE
-    keyword: String!
-    karaoke: Karaoke!
-    page: Int!
-  }
-
-  enum Karaoke {
-    KY
-    TJ
-  }
-
-  enum SearchBy {
-    NUMBER
-    TITLE
-    SINGER
-  }
 `;
 
 const resolvers = {
@@ -45,6 +19,6 @@ const resolvers = {
   },
 };
 
-const module = {typeDefs, resolvers};
+const songListBySearch = {typeDefs, resolvers};
 
-export default module;
+export default songListBySearch;

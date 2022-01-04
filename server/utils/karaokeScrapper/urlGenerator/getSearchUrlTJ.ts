@@ -8,7 +8,7 @@ const SEARCH_BY = {
   NUMBER: 16,
 };
 
-const getUrlTJ = (filter: GQLSearchFilter) => {
+const getSearchUrlTJ = (filter: GQLSearchFilter) => {
   const searchBy = SEARCH_BY[filter.searchBy];
   const keyword = encodeURIComponent(filter.keyword);
   const page = filter.page;
@@ -16,4 +16,4 @@ const getUrlTJ = (filter: GQLSearchFilter) => {
   return `${BASE_URL}?strType=${searchBy}&strText=${keyword}&intPage=${page}`;
 };
 
-export default getUrlTJ;
+export default getSearchUrlTJ;

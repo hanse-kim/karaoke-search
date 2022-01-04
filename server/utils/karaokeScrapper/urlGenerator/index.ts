@@ -1,13 +1,14 @@
-import type {GQLSearchFilter} from 'types';
-import getUrlKY from './getUrlKY';
-import getUrlTJ from './getUrlTJ';
+import type {GQLSearchFilter, Karaoke} from 'types';
+import {URL_POPULAR_KY, URL_POPULAR_TJ} from '../consts';
+import getSearchUrlKY from './getSearchUrlKY';
+import getSearchUrlTJ from './getSearchUrlTJ';
 
-const getUrl = (filter: GQLSearchFilter) => {
+export const getSearchUrl = (filter: GQLSearchFilter) => {
   let url = '';
   if (filter.karaoke === 'TJ') {
-    url = getUrlTJ(filter);
+    url = getSearchUrlTJ(filter);
   } else if (filter.karaoke === 'KY') {
-    url = getUrlKY(filter);
+    url = getSearchUrlKY(filter);
   }
 
   console.log(url);
@@ -15,4 +16,13 @@ const getUrl = (filter: GQLSearchFilter) => {
   return url;
 };
 
-export default getUrl;
+export const getPopluarUrl = (karaoke: Karaoke) => {
+  let url = '';
+  if (karaoke === 'TJ') {
+    url = URL_POPULAR_TJ;
+  } else if (karaoke === 'KY') {
+    url = URL_POPULAR_KY;
+  }
+
+  return url;
+};

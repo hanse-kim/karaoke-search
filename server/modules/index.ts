@@ -1,6 +1,8 @@
 import {gql} from 'apollo-server-micro';
 import combineModules from 'server/utils/combineModules';
-import getSongSearchResult from './songListBySearch';
+import songListBySearch from './songListBySearch';
+import songListPopular from './songListPopular';
+import domains from './domains';
 
 const root = {
   typeDefs: gql`
@@ -10,6 +12,12 @@ const root = {
   `,
 };
 
-const combined = combineModules(root, getSongSearchResult);
+const combined = combineModules(
+  root,
+  domains,
+  songListBySearch,
+  songListPopular
+);
+
 export const typeDefs = combined.typeDefs;
 export const resolvers = combined.resolvers;
