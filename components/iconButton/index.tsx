@@ -11,7 +11,7 @@ export const SearchIconButton = (props: Props) => {
       onClick={props.onClick}
       width='14px'
       height='14px'
-      path='/assets/icon_search.svg'
+      path='/assets/icon_search'
     />
   );
 };
@@ -22,7 +22,7 @@ export const EmptyHeartIconButton = (props: Props) => {
       onClick={props.onClick}
       width='20px'
       height='20px'
-      path='/assets/icon_heart_empty.svg'
+      path='/assets/icon_heart_empty'
     />
   );
 };
@@ -33,7 +33,7 @@ export const FilledHeartIconButton = (props: Props) => {
       onClick={props.onClick}
       width='20px'
       height='20px'
-      path='/assets/icon_heart_filled.svg'
+      path='/assets/icon_heart_filled'
     />
   );
 };
@@ -45,7 +45,7 @@ export const MyListIconButton = (props: Props) => {
         onClick={props.onClick}
         width='20px'
         height='20px'
-        path='/assets/icon_mylist.svg'
+        path='/assets/icon_mylist'
       />
     );
 }

@@ -9,9 +9,10 @@ export const IconButton = styled.button<IconButtonProps>`
   width: ${(props) => props.width};
   height: ${(props) => props.height};
 
-  background: no-repeat center url(${(props) => props.path});
+  background: no-repeat center
+    url(${(props) => `${props.path}${props.theme.darkModeSuffix}`}.svg);
   background-size: cover;
-  
+
   border: none;
   cursor: pointer;
 `;

@@ -29,15 +29,17 @@ export const HeaderNav = styled.nav`
   }
 `;
 
-export const Logo = styled.a`
+export const Logo = styled.a<ThemeProps>`
   width: 123px;
   height: 27px;
-  background: no-repeat center url(/assets/logo.svg);
+  background: no-repeat center
+    url(/assets/logo${(props) => props.theme.darkModeSuffix}.svg);
   display: block;
 
   @media (max-width: ${breakPoint.tablet}) {
     width: 27px;
-    background: no-repeat center url(/assets/logo_icon.svg);
+    background: no-repeat center
+      url(/assets/logo_icon${(props) => props.theme.darkModeSuffix}.svg);
   }
 `;
 
@@ -64,6 +66,7 @@ export const SearchFormInputWrapper = styled.div<ThemeProps>`
 
 export const SearchFormSelect = styled.select<ThemeProps>`
   color: ${(props) => props.theme.color.gray[0]};
+  background: ${(props) => props.theme.color.white};
   font-size: ${fontSize.md};
   border: none;
 
@@ -74,6 +77,7 @@ export const SearchFormSelect = styled.select<ThemeProps>`
 
 export const SearchFormInput = styled.input<ThemeProps>`
   color: ${(props) => props.theme.color.gray[0]};
+  background: ${(props) => props.theme.color.white};
   width: 160px;
   padding: 0 10px;
   font-size: ${fontSize.md};
