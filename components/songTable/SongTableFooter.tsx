@@ -9,14 +9,23 @@ interface Props {
 }
 
 const SongTableFooter = (props: Props) => {
+  const {isLoading, isEmpty} = props;
+
+  if (isLoading) {
+    return (
+      <Box>
+        {props.isLoading && (
+          <React.Fragment>
+            {!props.isEmpty && <Divider variant='thick' />}
+            <SongTableItemLoading />
+          </React.Fragment>
+        )}
+      </Box>
+    );
+  }
+
   return (
     <Box>
-      {props.isLoading && (
-        <React.Fragment>
-          {!props.isEmpty && <Divider />}
-          <SongTableItemLoading />
-        </React.Fragment>
-      )}
       <Divider variant='thick' />
     </Box>
   );
