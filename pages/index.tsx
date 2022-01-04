@@ -1,11 +1,13 @@
-import {Box} from 'components/_common';
+import {Footer} from 'views/footer';
 import {Header} from 'views/header';
+import {Home as HomeView} from 'views/home';
 
 const Home = () => {
   return (
     <div className='container'>
       <Header />
-      <Box>This is Home!</Box>
+      <HomeView />
+      <Footer />
     </div>
   );
 };
