@@ -1,6 +1,6 @@
 import {ThemeProps} from 'components/_common/styles';
 import styled, {css} from 'styled-components';
-import {fontSize} from 'styles/units';
+import {fontSize, fontWeight} from 'styles/units';
 
 export const PageNavWrapper = styled.div<ThemeProps>`
   display: flex;
@@ -9,7 +9,7 @@ export const PageNavWrapper = styled.div<ThemeProps>`
   border: 1px solid ${(props) => props.theme.color.gray[3]};
   border-radius: 4px;
   overflow: hidden;
-  font-weight: bold;
+  font-weight: ${fontWeight.bold};
 `;
 
 const pageNavButtonStyles = css`

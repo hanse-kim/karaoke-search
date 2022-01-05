@@ -1,9 +1,10 @@
 import {ThemeProps} from 'components/_common/styles';
 import styled from 'styled-components';
+import {fontWeight} from 'styles/units';
 
 export const EmptyPageWrapper = styled.div<ThemeProps>`
   color: ${(props) => props.theme.color.gray[2]};
-  font-weight: bolder;
+  font-weight: ${fontWeight.extrabold};
 
   width: 100%;
   height: 360px;

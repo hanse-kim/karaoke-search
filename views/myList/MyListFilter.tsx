@@ -1,7 +1,7 @@
 import {Stack} from 'components/_common';
 import {ThemeProps} from 'components/_common/styles';
 import styled from 'styled-components';
-import {fontSize} from 'styles/units';
+import {fontSize, fontWeight} from 'styles/units';
 
 export type MyListFilterType = 'ALL' | 'TJ' | 'KY';
 
@@ -41,12 +41,12 @@ interface FilterToggleProps extends ThemeProps {
 
 export const FilterText = styled.div`
   font-size: ${fontSize.md};
-  font-weight: bold;
+  font-weight: ${fontWeight.bold};
 `;
 
 export const FilterToggle = styled.span<FilterToggleProps>`
   font-size: ${fontSize.sm};
-  font-weight: bold;
+  font-weight: ${fontWeight.bold};
   padding: 4px 8px;
   border: 1px solid ${(props) => props.theme.color.gray[0]};
   border-radius: 9999px;

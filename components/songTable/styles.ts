@@ -1,10 +1,10 @@
 import {ThemeProps} from 'components/_common/styles';
 import styled from 'styled-components';
-import {breakPoint, fontSize} from 'styles/units';
+import {breakPoint, fontSize, fontWeight} from 'styles/units';
 
 export const SongTableHeaderInner = styled.div`
   height: 30px;
-  font-weight: bold;
+  font-weight: ${fontWeight.bold};
   font-size: ${fontSize.md};
 
   display: flex;

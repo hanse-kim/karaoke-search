@@ -4,6 +4,12 @@ export const fontSize = {
   lg: '20px',
 };
 
+export const fontWeight = {
+  normal: 400,
+  bold: 500,
+  extrabold: 700,
+};
+
 export const zIndex = {
   base: 0,
   nav: 10,
