@@ -67,7 +67,6 @@ export const SongTableItemWrapper = styled.div<ThemeProps>`
 
 export const TitleText = styled.span<ThemeProps>`
   font-size: ${fontSize.md};
-  line-height: 1em;
 
   overflow: hidden;
   text-overflow: ellipsis;
