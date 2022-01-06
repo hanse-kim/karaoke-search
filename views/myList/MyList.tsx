@@ -24,11 +24,12 @@ const MyList = (props: Props) => {
   const {page, setPage, maxPage, paginatedData} =
     usePaginatedData(filteredSongList);
 
-  if (!isLoading && songList.length === 0) {
+  if (!isLoading && filteredSongList.length === 0) {
     return (
       <PageWrapper>
-        <Stack spacing='24px'>
+        <Stack spacing='12px'>
           <Heading>마이리스트</Heading>
+          <MyListFilter selected={selected} setSelected={setSelected} />
           <EmptyPage
             text={
               '마이리스트가 비어 있습니다!\n노래를 검색 후 마이리스트에 추가해 보세요!'
