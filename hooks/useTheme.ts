@@ -1,16 +1,11 @@
-import {useEffect, useMemo, useState} from 'react';
+import {useMemo} from 'react';
 import {themeDark, themeDefault} from 'styles/theme';
+import useMediaQuery from './useMediaQuery';
+
+const QUERY_CHECK_DARK_MODE = '(prefers-color-scheme: dark)';
 
 const useTheme = () => {
-  const [isDarkMode, setDarkMode] = useState(false);
-
-  useEffect(() => {
-    const browserDarkMode = window.matchMedia(
-      '(prefers-color-scheme: dark)'
-    ).matches;
-    setDarkMode(browserDarkMode);
-  }, []);
-
+  const {matches: isDarkMode} = useMediaQuery(QUERY_CHECK_DARK_MODE);
   const theme = useMemo(
     () => (isDarkMode ? themeDark : themeDefault),
     [isDarkMode]
