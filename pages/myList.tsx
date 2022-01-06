@@ -1,15 +1,18 @@
+import {MyListContextProvider} from 'contexts/MyListContext';
 import useMyList from 'hooks/pages/useMyList';
 import {Footer} from 'views/footer';
 import {Header} from 'views/header';
 import {MyList as MyListView} from 'views/myList';
 
 const MyList = () => {
-  const {myList, isLoading} = useMyList();
+  const {myList, isLoading, toggleSong, isSongInMyList} = useMyList();
 
   return (
     <div className='container'>
       <Header />
-      <MyListView songList={myList} isLoading={isLoading} />
+      <MyListContextProvider value={{toggleSong, isSongInMyList}}>
+        <MyListView songList={myList} isLoading={isLoading} />
+      </MyListContextProvider>
       <Footer />
     </div>
   );

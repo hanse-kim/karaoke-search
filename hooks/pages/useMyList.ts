@@ -42,14 +42,14 @@ const useMyList = () => {
   );
 
   const toggleSong = useCallback(
-    (song: Song) => {
-      if (isSongInMyList(song.id)) {
+    (song: Song, isSongInMyList?: boolean) => {
+      if (isSongInMyList) {
         removeSong(song.id);
       } else {
         addSong(song);
       }
     },
-    [addSong, isSongInMyList, removeSong]
+    [addSong, removeSong]
   );
 
   return {myList, isLoading, addSong, removeSong, isSongInMyList, toggleSong};

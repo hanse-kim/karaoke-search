@@ -1,7 +1,7 @@
 import {Divider} from 'components/divider';
 import {Box} from 'components/_common';
-import useMyList from 'hooks/pages/useMyList';
-import React from 'react';
+import {MyListContext} from 'contexts/MyListContext';
+import React, {useContext} from 'react';
 import type {Song} from 'types';
 import SongTableItem from './SongTableItem';
 
@@ -12,7 +12,7 @@ interface Props {
 
 const SongTableBody = (props: Props) => {
   const {songList, isMobile} = props;
-  const {toggleSong, isSongInMyList} = useMyList();
+  const {isSongInMyList, toggleSong} = useContext(MyListContext);
 
   return (
     <Box>
@@ -21,9 +21,9 @@ const SongTableBody = (props: Props) => {
           {index !== 0 && <Divider />}
           <SongTableItem
             song={item}
-            inMyList={isSongInMyList(item.id)}
-            onClickSong={toggleSong}
             isMobile={isMobile}
+            toggleSong={toggleSong}
+            inMyList={isSongInMyList && isSongInMyList(item.id)}
           />
         </React.Fragment>
       ))}

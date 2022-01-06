@@ -1,14 +1,14 @@
+import React from 'react';
 import {
   EmptyHeartIconButton,
   FilledHeartIconButton,
 } from 'components/iconButton';
 import {Stack} from 'components/_common';
-import React from 'react';
 import type {Song} from 'types';
 import {
-  SongNumberCell,
-  SongTitleCell,
-  MyListCell,
+  SongNumberCell as StyledSongNumberCell,
+  SongTitleCell as StyledSongTitleCell,
+  MyListCell as StyledMyListCell,
   SongTableItemWrapper,
   SingerText,
   TitleText,
@@ -16,55 +16,62 @@ import {
 
 interface Props {
   song: Song;
-  inMyList?: boolean;
-  onClickSong: (song: Song) => void;
   isMobile?: boolean;
+  toggleSong?: (song: Song, inMyList?: boolean) => void;
+  inMyList?: boolean;
 }
 
 const SongTableItem = (props: Props) => {
-  const {song, inMyList, onClickSong, isMobile} = props;
-  const {karaoke, number, title, singer} = song;
+  const {song, isMobile, toggleSong, inMyList} = props;
+  const onClickSong = () => toggleSong && toggleSong(song, inMyList);
 
   if (isMobile) {
     return (
       <SongTableItemWrapper>
         <Stack spacing='8px' flex={1}>
-          <SongNumberCell>{`${karaoke}_${number}`}</SongNumberCell>
-          <SongTitleCell>
-            <Stack spacing='4px'>
-              <TitleText>{title}</TitleText>
-              <SingerText>{singer}</SingerText>
-            </Stack>
-          </SongTitleCell>
+          <SongNumberCell song={song} />
+          <SongTitleCell song={song} />
         </Stack>
-        <MyListCell
-          onClick={() => {
-            onClickSong(song);
-          }}
-        >
-          {inMyList ? <FilledHeartIconButton /> : <EmptyHeartIconButton />}
-        </MyListCell>
+        <MyListCell inMyList={inMyList} onClickSong={onClickSong} />
       </SongTableItemWrapper>
     );
   }
 
   return (
     <SongTableItemWrapper>
-      <SongNumberCell>{`${karaoke}_${number}`}</SongNumberCell>
-      <SongTitleCell>
-        <Stack spacing='4px'>
-          <TitleText>{title}</TitleText>
-          <SingerText>{singer}</SingerText>
-        </Stack>
-      </SongTitleCell>
-      <MyListCell
-        onClick={() => {
-          onClickSong(song);
-        }}
-      >
-        {inMyList ? <FilledHeartIconButton /> : <EmptyHeartIconButton />}
-      </MyListCell>
+      <SongNumberCell song={song} />
+      <SongTitleCell song={song} />
+      <MyListCell inMyList={inMyList} onClickSong={onClickSong} />
     </SongTableItemWrapper>
+  );
+};
+
+const SongNumberCell = (props: {song: Song}) => {
+  const {karaoke, number} = props.song;
+  return (
+    <StyledSongNumberCell>{`(${karaoke}) ${number}`}</StyledSongNumberCell>
+  );
+};
+
+const SongTitleCell = (props: {song: Song}) => {
+  const {title, singer} = props.song;
+  return (
+    <StyledSongTitleCell>
+      <Stack spacing='4px'>
+        <TitleText>{title}</TitleText>
+        <SingerText>{singer}</SingerText>
+      </Stack>
+    </StyledSongTitleCell>
+  );
+};
+
+const MyListCell = (props: {inMyList?: boolean; onClickSong: () => void}) => {
+  const {inMyList, onClickSong} = props;
+
+  return (
+    <StyledMyListCell onClick={onClickSong}>
+      {inMyList ? <FilledHeartIconButton /> : <EmptyHeartIconButton />}
+    </StyledMyListCell>
   );
 };
 
