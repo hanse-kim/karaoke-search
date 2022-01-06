@@ -1,3 +1,4 @@
+import {Main} from 'components/pageWrapper';
 import {MyListContextProvider} from 'contexts/MyListContext';
 import useMyList from 'hooks/pages/useMyList';
 import {Footer} from 'views/footer';
@@ -10,9 +11,11 @@ const MyList = () => {
   return (
     <div className='container'>
       <Header />
-      <MyListContextProvider value={{toggleSong, isSongInMyList}}>
-        <MyListView songList={myList} isLoading={isLoading} />
-      </MyListContextProvider>
+      <Main>
+        <MyListContextProvider value={{toggleSong, isSongInMyList}}>
+          <MyListView songList={myList} isLoading={isLoading} />
+        </MyListContextProvider>
+      </Main>
       <Footer />
     </div>
   );

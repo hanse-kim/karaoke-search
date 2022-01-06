@@ -1,9 +1,9 @@
 import {EmptyPage} from 'components/emptyPage';
 import {Heading} from 'components/heading';
 import {PageNav} from 'components/pageNav';
-import {PageWrapper} from 'components/pageWrapper';
+import { Article } from 'components/pageWrapper';
 import {SongTable} from 'components/songTable';
-import {Flex, Stack} from 'components/_common';
+import {Box, Flex, Stack} from 'components/_common';
 import {usePaginatedData} from 'hooks/usePaginatedData';
 import {useMemo, useState} from 'react';
 import {Song} from 'types';
@@ -26,7 +26,7 @@ const MyList = (props: Props) => {
 
   if (!isLoading && filteredSongList.length === 0) {
     return (
-      <PageWrapper>
+      <Article>
         <Stack spacing='12px'>
           <Heading>마이리스트</Heading>
           <MyListFilter selected={selected} setSelected={setSelected} />
@@ -36,12 +36,12 @@ const MyList = (props: Props) => {
             }
           />
         </Stack>
-      </PageWrapper>
+      </Article>
     );
   }
 
   return (
-    <PageWrapper>
+    <Article>
       <Stack spacing='12px'>
         <Heading>마이리스트</Heading>
         <MyListFilter selected={selected} setSelected={setSelected} />
@@ -50,7 +50,7 @@ const MyList = (props: Props) => {
           <PageNav currPage={page} maxPage={maxPage} setPage={setPage} />
         </Flex>
       </Stack>
-    </PageWrapper>
+    </Article>
   );
 };
 

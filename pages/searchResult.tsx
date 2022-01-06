@@ -1,3 +1,4 @@
+import {Main} from 'components/pageWrapper';
 import {MyListContextProvider} from 'contexts/MyListContext';
 import useMyList from 'hooks/pages/useMyList';
 import useSearchResult from 'hooks/pages/useSearchResult';
@@ -16,13 +17,15 @@ const SearchResult = (props: SearchFilter) => {
   return (
     <div className='container'>
       <Header />
-      <MyListContextProvider value={{toggleSong, isSongInMyList}}>
-        <SearchResultView
-          keyword={props.keyword}
-          songList={songList}
-          isLoading={isLoading}
-        />
-      </MyListContextProvider>
+      <Main>
+        <MyListContextProvider value={{toggleSong, isSongInMyList}}>
+          <SearchResultView
+            keyword={props.keyword}
+            songList={songList}
+            isLoading={isLoading}
+          />
+        </MyListContextProvider>
+      </Main>
       <Footer />
     </div>
   );

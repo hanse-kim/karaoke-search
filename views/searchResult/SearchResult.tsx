@@ -1,6 +1,6 @@
 import {EmptyPage} from 'components/emptyPage';
 import {Heading} from 'components/heading';
-import {PageWrapper} from 'components/pageWrapper';
+import {Article} from 'components/pageWrapper';
 import SongTable from 'components/songTable/SongTable';
 import {Stack} from 'components/_common';
 import type {Song} from 'types';
@@ -16,22 +16,22 @@ const SearchResult = (props: Props) => {
 
   if (!isLoading && songList.length === 0) {
     return (
-      <PageWrapper>
+      <Article>
         <Stack spacing='24px'>
           <Heading>{`'${keyword}' 검색 결과`}</Heading>
           <EmptyPage text='검색 결과가 없습니다!' />
         </Stack>
-      </PageWrapper>
+      </Article>
     );
   }
 
   return (
-    <PageWrapper>
+    <Article>
       <Stack spacing='24px'>
         <Heading>{`'${keyword}' 검색 결과`}</Heading>
         <SongTable songList={songList} isLoading={isLoading} />
       </Stack>
-    </PageWrapper>
+    </Article>
   );
 };
 
