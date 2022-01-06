@@ -4,7 +4,7 @@ export const usePaginatedData = <T>(data: T[], itemCountPerPage = 10) => {
   const [page, setPage] = useState(1);
 
   const maxPage = useMemo(
-    () => Math.max(Math.floor(data.length / itemCountPerPage), 1),
+    () => Math.ceil(data.length / itemCountPerPage),
     [data.length, itemCountPerPage]
   );
 
