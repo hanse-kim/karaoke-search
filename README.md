@@ -1,76 +1,93 @@
-## Example app using MongoDB
+# Karaoke Search
 
-[MongoDB](https://www.mongodb.com/) is a general purpose, document-based, distributed database built for modern application developers and for the cloud era. This example will show you how to connect to and use MongoDB as your backend for your Next.js app.
+노래방 곡 검색 서비스 '노래찾기'의 개발 repository입니다.
 
-If you want to learn more about MongoDB, visit the following pages:
+View: [karaoke-search.herokuapp.com](https://karaoke-search.herokuapp.com/)
 
-- [MongoDB Atlas](https://mongodb.com/atlas)
-- [MongoDB Documentation](https://docs.mongodb.com/)
+## Introduction
 
-## Deploy your own
+GraphQL 및 Apollo Client를 직접 사용해보면서 익히기 위해 이전에 프론트엔드 개발만 맡아 진행했던 [프로젝트](https://github.com/bluewood-truth/karaoke-search-frontend)를 리뉴얼하여 풀스택으로 진행한 토이 프로젝트입니다.
 
-Once you have access to the environment variables you'll need, deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
+이 서비스가 제공하는 기능은 다음과 같습니다.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-mongodb&project-name=with-mongodb&repository-name=with-mongodb&env=MONGODB_URI&envDescription=Required%20to%20connect%20the%20app%20with%20MongoDB)
+- **노래방 곡 검색**: TJ/KY 노래방에서 곡 제목/가수/곡 번호를 통해 원하는 곡을 검색할 수 있습니다.
+- **마이리스트**: 마음에 드는 노래를 찾아 `♡` 아이콘을 클릭하여 마이리스트에 등록하면 마이리스트 페이지에서 빠르게 찾을 수 있습니다.
 
-## How to use
+<br>
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
+## Installation
 
-```bash
-npx create-next-app --example with-mongodb with-mongodb-app
-# or
-yarn create next-app --example with-mongodb with-mongodb-app
+1. repository를 클론하여 코드를 다운로드합니다.
+
+   ```shell
+   git clone https://github.com/bluewood-truth/karaoke-search
+   ```
+
+2. node module들을 설치합니다.
+
+   ```shell
+   npm install
+   ```
+
+   또는
+
+   ```shell
+   yarn
+   ```
+
+3. 프로젝트를 빌드하고 실행합니다.
+
+   ```shell
+   npm run build
+   npm start
+   ```
+
+   또는
+
+   ```shell
+   yarn build
+   yarn start
+   ```
+
+<br>
+
+## Built With
+
+- [React.js](https://reactjs.org/)
+- [Next.js](https://nextjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [styled-components](https://styled-components.com/)
+- [GraphQL](https://graphql.org/)
+- [Apollo Server & Apollo Client](https://www.apollographql.com/)
+- [Storybook](https://storybook.js.org/)
+
+<br>
+
+## Design (Figma)
+
+![design](https://user-images.githubusercontent.com/55024033/148494649-593fcbb6-3252-4f6b-86a8-8b07e6e50f0b.png)
+
+<br>
+
+## Project Structure
+
+```
+root
+├components: 각각이 특별한 로직을 갖지 않는, view의 하위요소로 쓰이는 재사용 가능한 컴포넌트
+├views: 화면의 각 독립된 파트를 담당하는 컴포넌트
+├pages: Next.js의 페이지 라우팅을 위한 컴포넌트
+├hooks: 글로벌하게 사용되거나, 재사용 가능하거나, page 컴포넌트에서 쓰이는 커스텀 훅
+├utils: hook 이외의 일반적인 로직의 모음
+├server: 서버 사이드에 필요한 로직의 모음
+├styles: 글로벌 스타일 및 사이트에 전반적으로 사용되는 테마, 스타일 값 등의 모음
+├types: 여러 곳에서 사용되는 타입들의 모음
+├stories: storybook으로 확인 가능한 component story의 모음
+└public: favicon, asset 등 정적 파일(주로 이미지)의 모음
 ```
 
-## Configuration
+<br>
 
-### Set up a MongoDB database
+## License
 
-Set up a MongoDB database either locally or with [MongoDB Atlas for free](https://mongodb.com/atlas).
+Apache License 2.0.
 
-### Set up environment variables
-
-Copy the `env.local.example` file in this directory to `.env.local` (which will be ignored by Git):
-
-```bash
-cp .env.local.example .env.local
-```
-
-Set each variable on `.env.local`:
-
-- `MONGODB_URI` - Your MongoDB connection string. If you are using [MongoDB Atlas](https://mongodb.com/atlas) you can find this by clicking the "Connect" button for your cluster.
-
-### Run Next.js in development mode
-
-```bash
-npm install
-npm run dev
-
-# or
-
-yarn install
-yarn dev
-```
-
-Your app should be up and running on [http://localhost:3000](http://localhost:3000)! If it doesn't work, post on [GitHub discussions](https://github.com/vercel/next.js/discussions).
-
-You will either see a message stating "You are connected to MongoDB" or "You are NOT connected to MongoDB". Ensure that you have provided the correct `MONGODB_URI` environment variable.
-
-When you are successfully connected, you can refer to the [MongoDB Node.js Driver docs](https://mongodb.github.io/node-mongodb-native/3.4/tutorials/collections/) for further instructions on how to query your database.
-
-## Deploy on Vercel
-
-You can deploy this app to the cloud with [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
-
-#### Deploy Your Local Project
-
-To deploy your local project to Vercel, push it to GitHub/GitLab/Bitbucket and [import to Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example).
-
-**Important**: When you import your project on Vercel, make sure to click on **Environment Variables** and set them to match your `.env.local` file.
-
-#### Deploy from Our Template
-
-Alternatively, you can deploy using our template by clicking on the Deploy button below.
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-mongodb&project-name=with-mongodb&repository-name=with-mongodb&env=MONGODB_URI,MONGODB_DB&envDescription=Required%20to%20connect%20the%20app%20with%20MongoDB)
