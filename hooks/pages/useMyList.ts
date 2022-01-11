@@ -1,5 +1,10 @@
 import {useState, useMemo, useEffect, useCallback} from 'react';
 import type {Song} from 'types';
+import {
+  addToStorage,
+  getAllFromStorage,
+  removeFromStorage,
+} from 'utils/localStorage';
 
 interface MyListStorage {
   [key: string]: Song;
@@ -10,35 +15,29 @@ const MY_LIST = 'my-list';
 const useMyList = () => {
   const [isLoading, setLoading] = useState(true);
   const [myListMap, setMyListMap] = useState<MyListStorage>({});
+  const [myListDeleteMap, setMyListDeleteMap] = useState<string[]>([]);
   const myList = useMemo(() => Object.values(myListMap), [myListMap]);
 
   useEffect(() => {
-    const myListData = localStorage.getItem(MY_LIST);
-    if (myListData) setMyListMap(JSON.parse(myListData));
+    setMyListMap(getAllFromStorage<Song>(MY_LIST));
     setLoading(false);
   }, []);
 
   const addSong = useCallback((song: Song) => {
-    setMyListMap((myListMap) => {
-      const newMap = {...myListMap, [song.id]: song};
-      localStorage.setItem(MY_LIST, JSON.stringify(newMap));
-      return newMap;
-    });
+    setMyListMap((myListMap) => ({...myListMap, [song.id]: song}));
+    addToStorage(song.id, song, MY_LIST);
   }, []);
 
   const removeSong = useCallback((songId: string) => {
-    setMyListMap((myListMap) => {
-      const {[songId]: toDelete, ...newMap} = myListMap;
-      localStorage.setItem(MY_LIST, JSON.stringify(newMap));
-      return newMap;
-    });
+    setMyListDeleteMap((myListDeleteMap) => [...myListDeleteMap, songId]);
+    removeFromStorage(songId, MY_LIST);
   }, []);
 
   const isSongInMyList = useCallback(
     (songId: string) => {
-      return songId in myListMap;
+      return songId in myListMap && !myListDeleteMap.includes(songId);
     },
-    [myListMap]
+    [myListMap, myListDeleteMap]
   );
 
   const toggleSong = useCallback(
