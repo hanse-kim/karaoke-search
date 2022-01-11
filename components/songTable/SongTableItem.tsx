@@ -6,6 +6,7 @@ import {
 import {Stack} from 'components/_common';
 import type {Song} from 'types';
 import {
+  RankingCell as StyledRankingCell,
   SongNumberCell as StyledSongNumberCell,
   SongTitleCell as StyledSongTitleCell,
   MyListCell as StyledMyListCell,
@@ -19,15 +20,17 @@ interface Props {
   isMobile?: boolean;
   toggleSong?: (song: Song, inMyList?: boolean) => void;
   inMyList?: boolean;
+  ranking: number | null;
 }
 
 const SongTableItem = (props: Props) => {
-  const {song, isMobile, toggleSong, inMyList} = props;
+  const {song, isMobile, toggleSong, inMyList, ranking} = props;
   const onClickSong = () => toggleSong && toggleSong(song, inMyList);
 
   if (isMobile) {
     return (
       <SongTableItemWrapper>
+        <RankingCell ranking={ranking} />
         <Stack spacing='8px' flex={1}>
           <SongNumberCell song={song} />
           <SongTitleCell song={song} />
@@ -39,11 +42,17 @@ const SongTableItem = (props: Props) => {
 
   return (
     <SongTableItemWrapper>
+      <RankingCell ranking={ranking} />
       <SongNumberCell song={song} />
       <SongTitleCell song={song} />
       <MyListCell inMyList={inMyList} onClickSong={onClickSong} />
     </SongTableItemWrapper>
   );
+};
+
+const RankingCell = (props: {ranking: number | null}) => {
+  const {ranking} = props;
+  return ranking ? <StyledRankingCell>{ranking}</StyledRankingCell> : null;
 };
 
 const SongNumberCell = (props: {song: Song}) => {

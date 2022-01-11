@@ -20,6 +20,16 @@ export const TableCell = styled.div`
   align-items: center;
 `;
 
+export const RankingCell = styled(TableCell)`
+  width: 60px;
+  justify-content: center;
+
+  @media (max-width: ${breakPoint.mobile}) {
+    width: 30px;
+    justify-content: start;
+  }
+`;
+
 export const SongNumberCell = styled(TableCell)`
   width: 120px;
   justify-content: center;
