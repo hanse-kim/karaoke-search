@@ -23,7 +23,7 @@ export const getAllFromStorage = <T>(keyPrefix: string) => {
   const data: {[key: string]: T} = {};
   for (let i = 0; i < localStorage.length; i++) {
     const key = localStorage.key(i);
-    if (key && key?.startsWith(keyPrefix)) {
+    if (key && key?.startsWith(keyPrefix) && key.length > keyPrefix.length) {
       data[key.slice(keyPrefix.length + 1)] = getFromStorage(key);
     }
   }
