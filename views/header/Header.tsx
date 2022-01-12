@@ -1,4 +1,4 @@
-import {Button} from 'components/button';
+import Link from 'next/link';
 import {useRouter} from 'next/router';
 import {SearchFilter} from 'types';
 import MyListButton from './MyListButton';
@@ -16,7 +16,9 @@ const Header = () => {
     <HeaderWrapper>
       <HeaderInner>
         <HeaderNav>
-          <Logo href='/' />
+          <Link href='/' passHref>
+            <Logo />
+          </Link>
           <MyListButton />
         </HeaderNav>
         <SearchForm onSubmit={onSubmit} />

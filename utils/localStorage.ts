@@ -20,6 +20,7 @@ export const getFromStorage = (key: string, keyPrefix?: string) => {
 };
 
 export const getAllFromStorage = <T>(keyPrefix: string) => {
+  if (!localStorage) return {};
   const data: {[key: string]: T} = {};
   for (let i = 0; i < localStorage.length; i++) {
     const key = localStorage.key(i);

@@ -15,8 +15,10 @@ export const Button = styled.button<ButtonProps>`
   border-radius: 4px;
   border: 1px solid ${(props) => props.theme.color.gray[3]};
   background: none;
-  transition: background 0.1s;
   ${boxModelStyles}
+
+  cursor: pointer;
+  transition: background 0.1s;
 
   &:hover {
     background: ${(props) => props.theme.color.gray[4]}80;

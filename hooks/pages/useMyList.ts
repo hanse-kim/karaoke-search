@@ -25,6 +25,9 @@ const useMyList = () => {
 
   const addSong = useCallback((song: Song) => {
     setMyListMap((myListMap) => ({...myListMap, [song.id]: song}));
+    setMyListDeleteMap((myListDeleteMap) =>
+      myListDeleteMap.filter((item) => item !== song.id)
+    );
     addToStorage(song.id, song, MY_LIST);
   }, []);
 

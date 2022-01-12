@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import type {ThemeProps} from 'components/_common/styles';
 import {breakPoint, fontSize, zIndex} from 'styles/units';
+import Link from 'next/link';
 
 export const HeaderWrapper = styled.header<ThemeProps>`
   display: flex;
@@ -29,12 +30,14 @@ export const HeaderNav = styled.nav`
   }
 `;
 
-export const Logo = styled.a<ThemeProps>`
+export const Logo = styled.span<ThemeProps>`
   width: 123px;
   height: 27px;
   background: no-repeat center
     url(/assets/logo${(props) => props.theme.darkModeSuffix}.svg);
   display: block;
+
+  cursor: pointer;
 
   @media (max-width: ${breakPoint.tablet}) {
     width: 27px;
