@@ -1,5 +1,4 @@
-import {useQuery} from '@apollo/client';
-import {gql} from 'apollo-server-micro';
+import {gql, useQuery} from '@apollo/client';
 import {useState, useEffect, useCallback} from 'react';
 import type {Song, SearchFilter, GQLSearchFilter} from 'types';
 

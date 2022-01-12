@@ -21,9 +21,7 @@ const imageSrcListToPreload = [
 
 function MyApp({Component, pageProps}: AppProps) {
   const {theme} = useTheme();
-  const {cacheImage} = useImagePreload();
-
-  cacheImage(imageSrcListToPreload);
+  useImagePreload(imageSrcListToPreload);
 
   return (
     <ApolloProvider client={client}>

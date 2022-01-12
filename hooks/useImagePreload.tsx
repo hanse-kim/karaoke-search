@@ -1,19 +1,23 @@
-const useImagePreload = () => {
-  const cacheImage = async (imageSrcList: string[]) => {
-    const promises = imageSrcList.map(
-      (src) =>
-        new Promise((resolve, reject) => {
-          const img = new Image();
-          img.src = src;
-          img.onload = resolve;
-          img.onerror = reject;
-        })
-    );
+import {useEffect} from 'react';
 
-    await Promise.all(promises).catch(console.error);
-  };
+const useImagePreload = (imageSrcList: string[]) => {
+  useEffect(() => {
+    const cache = async () => {
+      const promises = imageSrcList.map(
+        (src) =>
+          new Promise((resolve, reject) => {
+            const img = new Image();
+            img.src = src;
+            img.onload = resolve;
+            img.onerror = reject;
+          })
+      );
 
-  return {cacheImage};
+      await Promise.all(promises).catch(console.error);
+    };
+
+    cache();
+  }, [imageSrcList]);
 };
 
 export default useImagePreload;
