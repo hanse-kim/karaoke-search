@@ -1,43 +1,31 @@
 import {ApolloClient, ApolloProvider, InMemoryCache} from '@apollo/client';
-import useImagePreload from 'hooks/useImagePreload';
 import useTheme from 'hooks/useTheme';
 import type {AppProps} from 'next/app';
 import Head from 'next/head';
-import {RecoilRoot} from 'recoil';
 import {ThemeProvider} from 'styled-components';
 import GlobalStyle from 'styles/GlobalStyle';
+import {Layout} from 'views/layout';
 
 const client = new ApolloClient({
   uri: '/api/graphql',
   cache: new InMemoryCache(),
 });
 
-const imageSrcListToPreload = [
-  '/assets/icon_heart_empty.svg',
-  '/assets/icon_heart_empty_dark.svg',
-  '/assets/icon_heart_filled.svg',
-  '/assets/icon_heart_filled_dark.svg',
-];
-
-function MyApp({Component, pageProps}: AppProps) {
+function MyApp({Component, pageProps, router}: AppProps) {
   const {theme} = useTheme();
-  useImagePreload(imageSrcListToPreload);
 
   return (
     <ApolloProvider client={client}>
-      <RecoilRoot>
-        <ThemeProvider theme={theme}>
-          <Head>
-            <title>노래찾기</title>
-            <meta
-              name='viewport'
-              content='width=device-width, initial-scale=1'
-            />
-          </Head>
-          <GlobalStyle />
+      <ThemeProvider theme={theme}>
+        <Head>
+          <title>{process.env.NEXT_PUBLIC_TITLE}</title>
+          <meta name='viewport' content='width=device-width, initial-scale=1' />
+        </Head>
+        <GlobalStyle />
+        <Layout isHome={router.pathname === '/'}>
           <Component {...pageProps} />
-        </ThemeProvider>
-      </RecoilRoot>
+        </Layout>
+      </ThemeProvider>
     </ApolloProvider>
   );
 }
