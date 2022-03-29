@@ -52,7 +52,7 @@ class MyDocument extends Document {
             rel='stylesheet'
           />
         </Head>
-        <body>
+        <body data-theme='light'>
           <Main />
           <NextScript />
         </body>
