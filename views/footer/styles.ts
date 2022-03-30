@@ -1,13 +1,28 @@
-import {ThemeProps} from 'components/_common/styles';
 import styled from 'styled-components';
 
-export const Footer = styled.footer<ThemeProps>`
+export const FooterWrapper = styled.footer`
   width: 100%;
-  height: 96px;
+  height: var(--footer-height);
   display: flex;
   justify-content: center;
   align-items: center;
+  column-gap: 0.25rem;
 
-  border-top: 1px solid ${(props) => props.theme.color.gray[3]};
-  color: ${(props) => props.theme.color.gray[1]};
+  position: relative;
+  z-index: var(--z-index-footer);
+
+  color: var(--color-heading);
+
+  &[data-is-home='true'] {
+    color: var(--color-home-logo);
+  }
+`;
+
+export const FooterLink = styled.a`
+  text-decoration: underline;
+  color: var(--color-heading);
+
+  [data-is-home='true'] > & {
+    color: var(--color-home-logo);
+  }
 `;

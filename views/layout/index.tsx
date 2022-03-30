@@ -1,7 +1,7 @@
 import React from 'react';
 import {Header} from 'views/header';
-import {Main} from 'components/pageWrapper';
 import {Footer} from 'views/footer';
+import {LayoutWrapper, Main} from './styles';
 
 interface Props {
   children?: React.ReactNode;
@@ -10,10 +10,10 @@ interface Props {
 
 export const Layout = ({children, isHome}: Props) => {
   return (
-    <div className='container'>
+    <LayoutWrapper className='container'>
       <Header isHome={isHome} />
       <Main>{children}</Main>
-      <Footer />
-    </div>
+      <Footer isHome={isHome} />
+    </LayoutWrapper>
   );
 };

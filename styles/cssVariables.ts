@@ -15,6 +15,10 @@ export const cssVariables = css`
     --color-white-hover: #fbfaf9;
     --color-white-active: #f7f5f3;
 
+    --color-shadow-strong: rgba(61, 60, 57, 0.25);
+    --color-shadow-normal: rgba(61, 60, 57, 0.2);
+    --color-shadow-weak: rgba(61, 60, 57, 0.1);
+
     --font-size-heading: 1.75rem;
     --font-size-lg: 1.125rem;
     --font-size-md: 1rem;
@@ -26,6 +30,13 @@ export const cssVariables = css`
     --radius-md: 0.25rem;
     --radius-lg: 0.5rem;
     --radius-full: 9999px;
+
+    --screen-width: 640px;
+    --footer-height: 160px;
+
+    --z-index-base: 0;
+    --z-index-header: 100;
+    --z-index-footer: 110;
   }
 
   body[data-theme='light'] {
@@ -36,7 +47,7 @@ export const cssVariables = css`
     --color-input-bg: var(--color-white);
     --color-input-content: var(--color-black);
     --color-input-label: var(--color-black);
-    --color-input-placeholer: var(--color-gray);
+    --color-input-placeholder: var(--color-gray);
 
     --color-floating-bg: var(--color-white);
     --color-floating-button: var(--color-main);
@@ -48,7 +59,7 @@ export const cssVariables = css`
     --color-header-bg: var(--color-white);
     --color-logo: var(--color-main);
     --color-main-bg: var(--color-light-gray);
-    --color-heading: var(--color-balck);
+    --color-heading: var(--color-black);
 
     --color-list-item-bg: var(--color-white);
     --color-list-item-content: var(--color-black);
