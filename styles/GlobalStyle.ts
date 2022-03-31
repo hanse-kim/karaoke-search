@@ -10,6 +10,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: AppleSDGothicNeo, 'Noto Sans KR', sans-serif;
     font-size: 16px;
     color: var(--color-black);
+    background-color: var(--color-main-bg);
   }
 `;
 

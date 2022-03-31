@@ -4,17 +4,18 @@ export const HeaderWrapper = styled.header`
   height: 50px;
   display: flex;
   justify-content: center;
-  box-shadow: 0 0 15px 0 rgba(0 0 0 / 0.25);
+  box-shadow: 0 0 8px 0 var(--color-shadow-strong);
 
   position: relative;
   z-index: var(--z-index-header);
   transition: height 0.3s, background-color 0.3s;
+  background-color: var(--color-header-bg);
 
   &[data-is-home='true'] {
     height: 100vh;
     width: 100vw;
     position: fixed;
-    background-color: var(--color-main);
+    background-color: var(--color-home-bg);
     padding-bottom: var(--footer-height);
   }
 `;
