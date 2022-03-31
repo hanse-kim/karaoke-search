@@ -8,6 +8,8 @@ interface Props {
 
 export const RippleButton = ({children, onClick}: Props) => {
   return (
-    <RippleButtonWrapper onClick={onClick}>{children}</RippleButtonWrapper>
+    <RippleButtonWrapper type='button' onClick={onClick}>
+      {children}
+    </RippleButtonWrapper>
   );
 };

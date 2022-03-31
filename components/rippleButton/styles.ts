@@ -1,45 +1,51 @@
 import styled from 'styled-components';
 
 export const RippleButtonWrapper = styled.button`
+  width: fit-content;
+  height: fit-content;
   position: relative;
-  border: none;
-  background: none;
+
   display: flex;
   justify-content: center;
   align-items: center;
-  width: fit-content;
-  height: fit-content;
+
   padding: 0;
+  border: none;
+  background: none;
+
+  cursor: pointer;
 
   &::before,
   &::after {
     content: '';
     position: absolute;
     border-radius: var(--radius-full);
+    transition-duration: 200ms;
+  }
+
+  &::before {
     width: 0;
     height: 0;
-
-    transition: background-color 0.2s;
+    background-color: rgba(0, 0, 0, 0.03);
+    transition-property: width, height;
   }
 
   &::after {
-    transition: width 0.2s, height 0.2s;
+    width: 140%;
+    height: 140%;
+    transition-property: background-color;
   }
 
   &:hover {
-    cursor: pointer;
     &::before {
       width: 140%;
       height: 140%;
-      background-color: rgba(0, 0, 0, 0.03);
     }
   }
 
   &:active {
     &::after {
-      width: 140%;
-      height: 140%;
-      background-color: rgba(0, 0, 0, 0.05);
+      background-color: rgba(0, 0, 0, 0.03);
     }
   }
 `;
