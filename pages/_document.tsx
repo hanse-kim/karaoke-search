@@ -40,7 +40,8 @@ class MyDocument extends Document {
       <Html lang='ko'>
         <Head>
           <meta charSet='utf-8' />
-          <link rel='icon' href='/favicon.ico' />
+          <link rel='icon' href='/favicon-48x48.png' />
+          <link rel='apple-touch-icon' href='/favicon-192x192.png'></link>
           <link rel='preconnect' href='https://fonts.googleapis.com' />
           <link
             rel='preconnect'
