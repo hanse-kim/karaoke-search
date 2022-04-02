@@ -63,6 +63,7 @@ export const cssVariables = css`
 
     --color-list-item-bg: var(--color-white);
     --color-list-item-content: var(--color-black);
+    --color-list-item-content-sub: var(--color-dark-gray);
     --color-bookmark: var(--color-main);
     --color-bookmark-empty: var(--color-white);
 
@@ -96,6 +97,7 @@ export const cssVariables = css`
 
     --color-list-item-bg: var(--color-main);
     --color-list-item-content: var(--color-black);
+    --color-list-item-content-sub: var(--color-dark-gray);
     --color-bookmark: var(--color-white);
     --color-bookmark-empty: var(--color-dark-gray);
 
