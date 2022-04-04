@@ -1,7 +1,9 @@
-import {ApolloClient, ApolloProvider, InMemoryCache} from '@apollo/client';
-import useTheme from 'hooks/useTheme';
-import type {AppProps} from 'next/app';
+import React from 'react';
 import Head from 'next/head';
+import type {AppProps} from 'next/app';
+import {ApolloClient, ApolloProvider, InMemoryCache} from '@apollo/client';
+import {SearchFilterProvider} from 'contexts/SearchFilterContext';
+import useTheme from 'hooks/useTheme';
 import {ThemeProvider} from 'styled-components';
 import GlobalStyle from 'styles/GlobalStyle';
 import {Layout} from 'views/layout';
@@ -22,9 +24,13 @@ function MyApp({Component, pageProps, router}: AppProps) {
           <meta name='viewport' content='width=device-width, initial-scale=1' />
         </Head>
         <GlobalStyle />
-        <Layout isHome={router.pathname === '/'}>
-          <Component {...pageProps} />
-        </Layout>
+        <React.StrictMode>
+          <SearchFilterProvider searchFilter={router.query}>
+            <Layout isHome={router.pathname === '/'}>
+              <Component {...pageProps} />
+            </Layout>
+          </SearchFilterProvider>
+        </React.StrictMode>
       </ThemeProvider>
     </ApolloProvider>
   );

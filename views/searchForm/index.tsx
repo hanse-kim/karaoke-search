@@ -1,5 +1,5 @@
 import {RadioGroup} from 'components/radioGroup';
-import { RippleButton } from 'components/rippleButton';
+import {RippleButton} from 'components/rippleButton';
 import {useInput} from 'hooks/useInput';
 import React, {useState} from 'react';
 import {SearchFilter} from 'types';
@@ -10,10 +10,12 @@ import {
   SearchInput,
 } from './styles';
 import SearchIconSvg from 'public/assets/iconSearch.svg';
+import {useRouter} from 'hooks/useRouter';
+import {useSearchFilter} from 'contexts/SearchFilterContext';
 
 interface Props {
   isHome?: boolean;
-  onSubmit: (filter: SearchFilter) => void;
+  searchFilter?: SearchFilter;
 }
 
 const karaokeList = [
@@ -27,15 +29,20 @@ const searchByList = [
   {value: 'NUMBER', label: '곡 번호'},
 ];
 
-const SearchForm = ({isHome, onSubmit}: Props) => {
-  const [karaoke, setKaraoke] = useState('TJ');
-  const [searchBy, handleChangeSearchBy] = useInput(searchByList[0].value);
-  const [keyword, handleChangeKeyword] = useInput();
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    onSubmit({karaoke, searchBy, keyword} as SearchFilter);
-  };
+export const SearchForm = ({isHome}: Props) => {
+  const {
+    handleSubmit,
+    karaoke,
+    setKaraoke,
+    searchBy,
+    handleChangeSearchBy,
+    keyword,
+    handleChangeKeyword,
+  } = useSearchForm({
+    karaoke: karaokeList[0].value,
+    searchBy: searchByList[0].value,
+    keyword: '',
+  });
 
   return (
     <SearchFormWrapper data-is-home={isHome} onSubmit={handleSubmit}>
@@ -53,7 +60,7 @@ const SearchForm = ({isHome, onSubmit}: Props) => {
           value={keyword}
           onChange={handleChangeKeyword}
         />
-        <RippleButton>
+        <RippleButton type='submit'>
           <SearchIconSvg />
         </RippleButton>
       </SearchInputWrapper>
@@ -61,4 +68,37 @@ const SearchForm = ({isHome, onSubmit}: Props) => {
   );
 };
 
-export default SearchForm;
+const useSearchForm = (initialValue: SearchFilter) => {
+  const searchFilter = useSearchFilter();
+
+  const [karaoke, setKaraoke] = useState<string>(
+    searchFilter?.karaoke || initialValue.karaoke
+  );
+  const [searchBy, handleChangeSearchBy] = useInput(
+    searchFilter?.searchBy || initialValue.searchBy
+  );
+  const [keyword, handleChangeKeyword] = useInput(
+    searchFilter?.keyword || initialValue.keyword
+  );
+
+  const {pushUrl} = useRouter();
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const url = {
+      pathname: '/searchResult',
+      query: {karaoke, searchBy, keyword},
+    };
+    pushUrl(url);
+  };
+
+  return {
+    karaoke,
+    setKaraoke,
+    searchBy,
+    handleChangeSearchBy,
+    keyword,
+    handleChangeKeyword,
+    handleSubmit,
+  };
+};
