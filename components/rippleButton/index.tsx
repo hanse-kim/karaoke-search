@@ -4,11 +4,12 @@ import {RippleButtonWrapper} from './styles';
 interface Props {
   children?: React.ReactNode;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  type?: 'button' | 'submit' | 'reset';
 }
 
-export const RippleButton = ({children, onClick}: Props) => {
+export const RippleButton = ({children, onClick, type}: Props) => {
   return (
-    <RippleButtonWrapper type='button' onClick={onClick}>
+    <RippleButtonWrapper type={type} onClick={onClick}>
       {children}
     </RippleButtonWrapper>
   );

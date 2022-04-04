@@ -3,7 +3,7 @@ import {fadeIn} from 'styles/animation';
 
 export const NoResultWrapper = styled.div`
   color: var(--color-gray);
-  height: 480px;
+  height: 50vh;
   display: flex;
   justify-content: center;
   align-items: center;

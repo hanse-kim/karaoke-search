@@ -1,5 +1,5 @@
 import {Checkbox} from 'components/checkbox';
-import {ChangeEvent, ChangeEventHandler} from 'react';
+import {ChangeEventHandler} from 'react';
 import {RadioGroupWrapper} from './styles';
 
 interface Props {

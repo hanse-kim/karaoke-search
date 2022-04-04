@@ -6,10 +6,10 @@ interface Props {
   children?: React.ReactNode;
 }
 
-export const Article = ({title: label, children}: Props) => {
+export const Article = ({title, children}: Props) => {
   return (
     <ArticleWrapper>
-      <Heading>{label}</Heading>
+      <Heading>{title}</Heading>
       {children}
     </ArticleWrapper>
   );

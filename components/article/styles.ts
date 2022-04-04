@@ -7,7 +7,7 @@ export const ArticleWrapper = styled.article`
   flex-direction: column;
   row-gap: 36px;
   padding-top: 36px;
-  padding-bottom: 108px;
+  padding-bottom: 64px;
 `;
 
 export const Heading = styled.h1`
