@@ -12,7 +12,6 @@ export const SongListWrapper = styled.ul`
 
 export const ListItem = styled.li`
   animation: ${fadeIn} 500ms backwards;
-  
 
   ${Array(SONG_COUNT_PER_FETCH)
     .fill(null)
@@ -35,9 +34,11 @@ export const SongItemWrapper = styled.div`
   border-radius: var(--radius-lg);
   box-shadow: 0 4px 12px var(--color-shadow-weak);
   transition: transform 0.2s;
+  transform-origin: center right;
+  will-change: transform;
 
   &:hover {
-    transform: scale(1.03);
+    transform: scale(1.05);
   }
 `;
 

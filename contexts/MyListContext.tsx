@@ -1,4 +1,3 @@
-import {useStorage} from 'hooks/useStorage';
 import {
   useCallback,
   useState,
@@ -6,7 +5,8 @@ import {
   useContext,
   useEffect,
 } from 'react';
-import type {MyList, MyListSong, Song} from 'types';
+import {useStorage} from 'hooks/useStorage';
+import type {MyList, Song} from 'types';
 
 interface ContextState {
   myList: MyList | null;

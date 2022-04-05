@@ -1,12 +1,12 @@
 import type {GetServerSideProps} from 'next';
-import type {SearchFilter} from 'types';
+import {MyListProvider} from 'contexts/MyListContext';
 import useSearchResult from 'hooks/pages/useSearchResult';
 import useInfiniteScroll from 'hooks/useInfiniteScroll';
 import {Article} from 'components/article';
 import {SongList} from 'components/songList';
-import {getSearchResultTitle} from 'utils/getSearchResultTitle';
 import {NoResult} from 'components/noResult';
-import {MyListProvider} from 'contexts/MyListContext';
+import type {SearchFilter} from 'types';
+import {getSearchResultTitle} from 'utils/getSearchResultTitle';
 
 const SearchResultPage = (props: SearchFilter) => {
   const {isEnded, isLoading, songList, fetchMore} = useSearchResult(props);

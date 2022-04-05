@@ -1,6 +1,6 @@
+import React, {useCallback} from 'react';
 import {Loading} from 'components/loading';
 import {useMyList} from 'contexts/MyListContext';
-import React, {useCallback} from 'react';
 import {Song} from 'types';
 import {SongItem} from './songItem';
 import {ListItemLoading, SongListWrapper} from './styles';
@@ -34,7 +34,12 @@ export const SongList = ({songList, isLoading}: Props) => {
   return (
     <SongListWrapper>
       {songList.map((song) => (
-        <SongItem key={song.id} song={song} inMyList={song.id in myList} onToggleMyList={handleToggleMyListButton} />
+        <SongItem
+          key={song.id}
+          song={song}
+          inMyList={song.id in myList}
+          onToggleMyList={handleToggleMyListButton}
+        />
       ))}
       <ListItemLoading>{isLoading && <Loading />}</ListItemLoading>
     </SongListWrapper>

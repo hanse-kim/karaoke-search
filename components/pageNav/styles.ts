@@ -1,4 +1,4 @@
-import {ThemeProps} from 'components/_common/styles';
+import type {ThemeProps} from 'styles/theme';
 import styled, {css} from 'styled-components';
 import {fontSize, fontWeight} from 'styles/units';
 

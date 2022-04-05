@@ -1,5 +1,5 @@
+import React, {useCallback, ChangeEventHandler} from 'react';
 import {Checkbox} from 'components/checkbox';
-import {ChangeEventHandler} from 'react';
 import {RadioGroupWrapper} from './styles';
 
 interface Props {
@@ -8,7 +8,7 @@ interface Props {
   onSelect?: (value: string) => void;
 }
 
-export const RadioGroup = ({data, selected, onSelect}: Props) => {
+export const RadioGroup = React.memo(({data, selected, onSelect}: Props) => {
   const {handleChange} = useRadioGroup(onSelect);
 
   return (
@@ -23,16 +23,20 @@ export const RadioGroup = ({data, selected, onSelect}: Props) => {
       ))}
     </RadioGroupWrapper>
   );
-};
+});
+
+RadioGroup.displayName = 'RadioGroup';
 
 const useRadioGroup = (onSelect?: (value: string) => void) => {
-  const handleChange =
+  const handleChange = useCallback(
     (value: string): ChangeEventHandler<HTMLInputElement> =>
-    (e) => {
-      if (e.target.value && onSelect) {
-        onSelect(value);
-      }
-    };
+      (e) => {
+        if (e.target.value && onSelect) {
+          onSelect(value);
+        }
+      },
+    [onSelect]
+  );
 
   return {handleChange};
 };

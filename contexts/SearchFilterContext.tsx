@@ -29,6 +29,6 @@ export const SearchFilterProvider = ({
 
 export const useSearchFilter = () => {
   const state = useContext(SearchFilterContext);
-
-  return state && {...state.searchFilter};
+  if (state === null) throw new Error('Cannot find SearchFilterProvider.');
+  return state.searchFilter;
 };

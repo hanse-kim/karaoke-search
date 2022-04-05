@@ -1,13 +1,11 @@
-import {EmptyPage} from 'components/emptyPage';
-import {Heading} from 'components/heading';
 import {PageNav} from 'components/pageNav';
-import {Article} from 'components/pageWrapper';
-import {SongTable} from 'components/songTable';
-import {Box, Flex, Stack} from 'components/_common';
+import {Article} from 'components/article';
+import {SongList} from 'components/songList';
 import {usePaginatedData} from 'hooks/usePaginatedData';
 import {useMemo, useState} from 'react';
 import {Song} from 'types';
 import MyListFilter, {MyListFilterType} from './MyListFilter';
+import { MyListProvider } from 'contexts/MyListContext';
 
 interface Props {
   songList: Song[];
@@ -26,36 +24,24 @@ const MyList = (props: Props) => {
 
   if (!isLoading && filteredSongList.length === 0) {
     return (
-      <Article>
-        <Stack spacing='12px'>
-          <Heading>마이리스트</Heading>
-          <MyListFilter
-            selected={filterSelected}
-            setSelected={setFilterSelected}
-          />
-          <EmptyPage
-            text={
-              '마이리스트가 비어 있습니다!\n노래를 검색 후 마이리스트에 추가해 보세요!'
-            }
-          />
-        </Stack>
+      <Article title='마이리스트'>
+        <MyListFilter
+          selected={filterSelected}
+          setSelected={setFilterSelected}
+        />
       </Article>
     );
   }
 
   return (
-    <Article>
-      <Stack spacing='12px'>
-        <Heading>마이리스트</Heading>
-        <MyListFilter
-          selected={filterSelected}
-          setSelected={setFilterSelected}
-        />
-        <SongTable songList={paginatedData} isLoading={isLoading} />
-        <Flex justifyContent='center' alignItems='center'>
-          <PageNav currPage={page} maxPage={maxPage} setPage={setPage} />
-        </Flex>
-      </Stack>
+    <Article title='마이리스트'>
+      <MyListFilter selected={filterSelected} setSelected={setFilterSelected} />
+      <MyListProvider>
+        <SongList songList={paginatedData} isLoading={isLoading} />
+      </MyListProvider>
+      <div>
+        <PageNav currPage={page} maxPage={maxPage} setPage={setPage} />
+      </div>
     </Article>
   );
 };

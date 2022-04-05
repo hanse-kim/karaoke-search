@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { headingText } from "styles/typography";
+import styled from 'styled-components';
+import {headingText} from 'styles/typography';
 
 export const ArticleWrapper = styled.article`
   width: var(--screen-width);

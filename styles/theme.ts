@@ -1,5 +1,9 @@
 export type Theme = typeof themeDefault;
 
+export interface ThemeProps {
+  theme: Theme;
+}
+
 export const themeDefault = {
   color: {
     white: '#FFFFFF',

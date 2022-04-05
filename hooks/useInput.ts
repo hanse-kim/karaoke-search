@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useCallback, useState} from 'react';
 
 export const useInput = (
   initialValue = ''
@@ -8,11 +8,12 @@ export const useInput = (
 ] => {
   const [value, setValue] = useState(initialValue);
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>
-  ) => {
-    setValue(e.target.value);
-  };
+  const handleChange = useCallback(
+    (e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>) => {
+      setValue(e.target.value);
+    },
+    []
+  );
 
   return [value, handleChange];
 };

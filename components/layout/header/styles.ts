@@ -6,8 +6,6 @@ export const HeaderWrapper = styled.header`
   justify-content: center;
   box-shadow: 0 0 8px 0 var(--color-shadow-strong);
 
-  position: relative;
-  z-index: var(--z-index-header);
   transition: height 0.3s, background-color 0.3s;
   background-color: var(--color-header-bg);
 

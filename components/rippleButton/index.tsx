@@ -7,10 +7,12 @@ interface Props {
   type?: 'button' | 'submit' | 'reset';
 }
 
-export const RippleButton = ({children, onClick, type}: Props) => {
+export const RippleButton = React.memo(({children, onClick, type}: Props) => {
   return (
     <RippleButtonWrapper type={type} onClick={onClick}>
       {children}
     </RippleButtonWrapper>
   );
-};
+});
+
+RippleButton.displayName = 'RippleButton';

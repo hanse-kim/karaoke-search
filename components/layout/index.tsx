@@ -1,6 +1,6 @@
 import React from 'react';
-import {Header} from 'views/header';
-import {Footer} from 'views/footer';
+import {Header} from './header';
+import {Footer} from './footer';
 import {LayoutWrapper, Main} from './styles';
 import {SearchFilter} from 'types';
 

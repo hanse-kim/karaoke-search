@@ -1,4 +1,4 @@
-import {ThemeProps} from 'components/_common/styles';
+import React from 'react';
 import styled from 'styled-components';
 
 export const SearchFormWrapper = styled.form`
@@ -13,7 +13,7 @@ export const SearchFormWrapper = styled.form`
   }
 `;
 
-export const SearchInputWrapper = styled.div<ThemeProps>`
+export const SearchInputWrapper = React.memo(styled.div`
   width: 22.5rem;
   display: flex;
   align-items: center;
@@ -28,15 +28,15 @@ export const SearchInputWrapper = styled.div<ThemeProps>`
     border: none;
     box-shadow: 0 0 0.25rem var(--color-shadow-strong);
   }
-`;
+`);
 
-export const SearchSelect = styled.select`
+export const SearchSelect = React.memo(styled.select`
   color: var(--color-input-content);
   background: var(--color-input-bg);
   border: none;
-`;
+`);
 
-export const SearchInput = styled.input<ThemeProps>`
+export const SearchInput = React.memo(styled.input`
   color: var(--color-input-content);
   background: var(--color-input-bg);
   width: 100%;
@@ -45,4 +45,4 @@ export const SearchInput = styled.input<ThemeProps>`
   &::placeholder {
     color: var(--color-input-placeholder);
   }
-`;
+`);

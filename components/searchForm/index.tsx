@@ -1,8 +1,9 @@
+import React, {useMemo, useState} from 'react';
+import {useInput} from 'hooks/useInput';
+import {useRouter} from 'hooks/useRouter';
 import {RadioGroup} from 'components/radioGroup';
 import {RippleButton} from 'components/rippleButton';
-import {useInput} from 'hooks/useInput';
-import React, {useState} from 'react';
-import {SearchFilter} from 'types';
+import {SearchFilter, SearchFilterObject} from 'types';
 import {
   SearchFormWrapper,
   SearchInputWrapper,
@@ -10,26 +11,24 @@ import {
   SearchInput,
 } from './styles';
 import SearchIconSvg from 'public/assets/iconSearch.svg';
-import {useRouter} from 'hooks/useRouter';
-import {useSearchFilter} from 'contexts/SearchFilterContext';
 
 interface Props {
   isHome?: boolean;
-  searchFilter?: SearchFilter;
+  searchFilter?: SearchFilterObject;
 }
 
-const karaokeList = [
+const karaokeList: {value: SearchFilter['karaoke']; label: string}[] = [
   {value: 'TJ', label: 'TJ'},
   {value: 'KY', label: 'KY'},
 ];
 
-const searchByList = [
+const searchByList: {value: SearchFilter['searchBy']; label: string}[] = [
   {value: 'TITLE', label: '곡 제목'},
   {value: 'SINGER', label: '가수'},
   {value: 'NUMBER', label: '곡 번호'},
 ];
 
-export const SearchForm = ({isHome}: Props) => {
+export const SearchForm = ({isHome, searchFilter}: Props) => {
   const {
     handleSubmit,
     karaoke,
@@ -38,22 +37,34 @@ export const SearchForm = ({isHome}: Props) => {
     handleChangeSearchBy,
     keyword,
     handleChangeKeyword,
-  } = useSearchForm({
-    karaoke: karaokeList[0].value,
-    searchBy: searchByList[0].value,
-    keyword: '',
-  });
+  } = useSearchForm(
+    {
+      karaoke: karaokeList[0].value,
+      searchBy: searchByList[0].value,
+      keyword: '',
+    },
+    searchFilter
+  );
+
+  const options = useMemo(() => {
+    return searchByList.map((item, index) => (
+      <option key={index} value={item.value}>
+        {item.label}
+      </option>
+    ));
+  }, []);
 
   return (
     <SearchFormWrapper data-is-home={isHome} onSubmit={handleSubmit}>
       <RadioGroup data={karaokeList} selected={karaoke} onSelect={setKaraoke} />
       <SearchInputWrapper data-is-home={isHome}>
-        <SearchSelect value={searchBy} onChange={handleChangeSearchBy}>
-          {searchByList.map((item, index) => (
-            <option key={index} value={item.value}>
-              {item.label}
-            </option>
-          ))}
+        <SearchSelect
+          title='검색 기준'
+          name='searchBy'
+          value={searchBy}
+          onChange={handleChangeSearchBy}
+        >
+          {options}
         </SearchSelect>
         <SearchInput
           placeholder='search for...'
@@ -68,9 +79,10 @@ export const SearchForm = ({isHome}: Props) => {
   );
 };
 
-const useSearchForm = (initialValue: SearchFilter) => {
-  const searchFilter = useSearchFilter();
-
+const useSearchForm = (
+  initialValue: SearchFilter,
+  searchFilter?: SearchFilterObject
+) => {
   const [karaoke, setKaraoke] = useState<string>(
     searchFilter?.karaoke || initialValue.karaoke
   );

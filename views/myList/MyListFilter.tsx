@@ -1,6 +1,5 @@
-import {Stack} from 'components/_common';
-import {ThemeProps} from 'components/_common/styles';
 import styled from 'styled-components';
+import {ThemeProps} from 'styles/theme';
 import {fontSize, fontWeight} from 'styles/units';
 
 export type MyListFilterType = 'ALL' | 'TJ' | 'KY';
@@ -20,7 +19,7 @@ const MyListFilter = (props: Props) => {
   const {selected, setSelected} = props;
 
   return (
-    <Stack spacing='4px' isHorizontal alignItems='center'>
+    <div>
       <FilterText>필터:</FilterText>
       {filters.map((item, index) => (
         <FilterToggle
@@ -31,7 +30,7 @@ const MyListFilter = (props: Props) => {
           {item.label}
         </FilterToggle>
       ))}
-    </Stack>
+    </div>
   );
 };
 

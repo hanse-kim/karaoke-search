@@ -2,11 +2,11 @@ import React from 'react';
 import Head from 'next/head';
 import type {AppProps} from 'next/app';
 import {ApolloClient, ApolloProvider, InMemoryCache} from '@apollo/client';
+import {ThemeProvider} from 'styled-components';
 import {SearchFilterProvider} from 'contexts/SearchFilterContext';
 import useTheme from 'hooks/useTheme';
-import {ThemeProvider} from 'styled-components';
+import {Layout} from 'components/layout';
 import GlobalStyle from 'styles/GlobalStyle';
-import {Layout} from 'views/layout';
 
 const client = new ApolloClient({
   uri: '/api/graphql',

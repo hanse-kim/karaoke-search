@@ -8,13 +8,12 @@ export const FooterWrapper = styled.footer`
   align-items: center;
   column-gap: 0.25rem;
 
-  position: relative;
-  z-index: var(--z-index-footer);
-
   color: var(--color-heading);
 
   &[data-is-home='true'] {
     color: var(--color-home-logo);
+    position: static;
+    z-index: var(--z-index-footer);
   }
 `;
 

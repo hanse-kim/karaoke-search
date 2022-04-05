@@ -1,6 +1,6 @@
+import {RippleButton} from 'components/rippleButton';
 import {MyListButtonWrapper} from './styles';
 import IconStarSvg from 'public/assets/iconStar.svg';
-import {RippleButton} from 'components/rippleButton';
 
 interface Props {
   inMyList?: boolean;
