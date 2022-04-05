@@ -12,11 +12,7 @@ export const SongListWrapper = styled.ul`
 
 export const ListItem = styled.li`
   animation: ${fadeIn} 500ms backwards;
-  transition: transform 0.2s;
-
-  &:hover {
-    transform: scale(1.03);
-  }
+  
 
   ${Array(SONG_COUNT_PER_FETCH)
     .fill(null)
@@ -38,12 +34,23 @@ export const SongItemWrapper = styled.div`
   background-color: var(--color-list-item-bg);
   border-radius: var(--radius-lg);
   box-shadow: 0 4px 12px var(--color-shadow-weak);
+  transition: transform 0.2s;
+
+  &:hover {
+    transform: scale(1.03);
+  }
 `;
 
 export const SongNumber = styled.div`
   ${largeText};
   width: 4rem;
   text-align: center;
+`;
+
+export const SongInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 `;
 
 export const Singer = styled.div`
@@ -54,6 +61,14 @@ export const Singer = styled.div`
 export const Buttons = styled.div`
   display: flex;
   column-gap: 0.5rem;
+`;
+
+export const MyListButtonWrapper = styled.div`
+  color: var(--color-bookmark-empty);
+
+  &[data-in-my-list='true'] {
+    color: var(--color-bookmark);
+  }
 `;
 
 export const ListItemLoading = styled.li`

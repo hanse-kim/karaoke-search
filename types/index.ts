@@ -1,4 +1,4 @@
-export type Karaoke = 'KY' | 'TJ' | (string & {});
+export type Karaoke = 'KY' | 'TJ';
 
 export interface Song {
   id: string;
@@ -12,15 +12,16 @@ export interface MyListSong extends Song {
   createdAt: number;
 }
 
+export type MyList = Record<string, MyListSong>;
+
 export interface SearchFilterObject {
-  [key: string]: unknown;
   searchBy?: 'NUMBER' | 'TITLE' | 'SINGER' | (string & {});
   keyword?: string;
-  karaoke?: Karaoke;
+  karaoke?: Karaoke | (string & {});
 }
 
 export interface SearchFilter {
-  searchBy: 'NUMBER' | 'TITLE' | 'SINGER' | (string & {});
+  searchBy: 'NUMBER' | 'TITLE' | 'SINGER';
   keyword: string;
   karaoke: Karaoke;
 }

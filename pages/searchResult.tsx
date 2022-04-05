@@ -1,18 +1,16 @@
 import type {GetServerSideProps} from 'next';
 import type {SearchFilter} from 'types';
-import {MyListContextProvider} from 'contexts/MyListContext';
-import useMyList from 'hooks/pages/useMyList';
 import useSearchResult from 'hooks/pages/useSearchResult';
 import useInfiniteScroll from 'hooks/useInfiniteScroll';
 import {Article} from 'components/article';
 import {SongList} from 'components/songList';
 import {getSearchResultTitle} from 'utils/getSearchResultTitle';
-import {NoResult} from 'components/noResult.ts';
+import {NoResult} from 'components/noResult';
+import {MyListProvider} from 'contexts/MyListContext';
 
-const SearchResult = (props: SearchFilter) => {
+const SearchResultPage = (props: SearchFilter) => {
   const {isEnded, isLoading, songList, fetchMore} = useSearchResult(props);
   useInfiniteScroll(fetchMore, isEnded || isLoading);
-  const {toggleSong, isSongInMyList} = useMyList();
   const searchResultTitle = getSearchResultTitle(props);
 
   if (!isLoading && songList.length === 0) {
@@ -25,9 +23,9 @@ const SearchResult = (props: SearchFilter) => {
 
   return (
     <Article title={searchResultTitle}>
-      <MyListContextProvider value={{toggleSong, isSongInMyList}}>
+      <MyListProvider>
         <SongList songList={songList} isLoading={isLoading} />
-      </MyListContextProvider>
+      </MyListProvider>
     </Article>
   );
 };
@@ -36,4 +34,4 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   return {props: {...context.query}};
 };
 
-export default SearchResult;
+export default SearchResultPage;
