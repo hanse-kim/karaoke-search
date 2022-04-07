@@ -1,14 +1,7 @@
 import React from 'react';
 import {Song} from 'types';
 import {MyListButton} from './myListButton';
-import {
-  Buttons,
-  ListItem,
-  Singer,
-  SongInfo,
-  SongItemWrapper,
-  SongNumber,
-} from './styles';
+import * as Styled from './styled';
 
 interface Props {
   song: Song;
@@ -23,18 +16,18 @@ export const SongItem = React.memo(
     };
 
     return (
-      <ListItem>
-        <SongItemWrapper>
-          <SongNumber>{song.number}</SongNumber>
-          <SongInfo>
+      <Styled.ListItem>
+        <Styled.SongItem>
+          <Styled.SongNumber>{song.number}</Styled.SongNumber>
+          <Styled.SongInfo>
             <div>{song.title}</div>
-            <Singer>{song.singer}</Singer>
-          </SongInfo>
-          <Buttons>
+            <Styled.Singer>{song.singer}</Styled.Singer>
+          </Styled.SongInfo>
+          <Styled.Buttons>
             <MyListButton inMyList={inMyList} onClick={handleToggleMyList} />
-          </Buttons>
-        </SongItemWrapper>
-      </ListItem>
+          </Styled.Buttons>
+        </Styled.SongItem>
+      </Styled.ListItem>
     );
   }
 );

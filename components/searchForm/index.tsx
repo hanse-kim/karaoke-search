@@ -4,12 +4,7 @@ import {useRouter} from 'hooks/useRouter';
 import {RadioGroup} from 'components/radioGroup';
 import {RippleButton} from 'components/rippleButton';
 import {SearchFilter, SearchFilterObject} from 'types';
-import {
-  SearchFormWrapper,
-  SearchInputWrapper,
-  SearchSelect,
-  SearchInput,
-} from './styles';
+import * as Styled from './styled';
 import SearchIconSvg from 'public/assets/iconSearch.svg';
 
 interface Props {
@@ -55,18 +50,18 @@ export const SearchForm = ({isHome, searchFilter}: Props) => {
   }, []);
 
   return (
-    <SearchFormWrapper data-is-home={isHome} onSubmit={handleSubmit}>
+    <Styled.SearchForm data-is-home={isHome} onSubmit={handleSubmit}>
       <RadioGroup data={karaokeList} selected={karaoke} onSelect={setKaraoke} />
-      <SearchInputWrapper data-is-home={isHome}>
-        <SearchSelect
+      <Styled.SearchInputWrapper data-is-home={isHome}>
+        <Styled.SearchSelect
           title='검색 기준'
           name='searchBy'
           value={searchBy}
           onChange={handleChangeSearchBy}
         >
           {options}
-        </SearchSelect>
-        <SearchInput
+        </Styled.SearchSelect>
+        <Styled.SearchInput
           placeholder='search for...'
           value={keyword}
           onChange={handleChangeKeyword}
@@ -74,8 +69,8 @@ export const SearchForm = ({isHome, searchFilter}: Props) => {
         <RippleButton type='submit'>
           <SearchIconSvg />
         </RippleButton>
-      </SearchInputWrapper>
-    </SearchFormWrapper>
+      </Styled.SearchInputWrapper>
+    </Styled.SearchForm>
   );
 };
 

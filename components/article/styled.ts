@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import {headingText} from 'styles/typography';
 
-export const ArticleWrapper = styled.article`
+export const Article = styled.article`
   width: var(--screen-width);
   display: flex;
   flex-direction: column;

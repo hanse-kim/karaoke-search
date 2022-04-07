@@ -4,7 +4,7 @@ import {largeText, smallText} from 'styles/typography';
 
 const SONG_COUNT_PER_FETCH = 15;
 
-export const SongListWrapper = styled.ul`
+export const SongList = styled.ul`
   display: flex;
   flex-direction: column;
   row-gap: 1rem;
@@ -24,7 +24,7 @@ export const ListItem = styled.li`
     )};
 `;
 
-export const SongItemWrapper = styled.div`
+export const SongItem = styled.div`
   display: flex;
   align-items: center;
   column-gap: 1.5rem;
@@ -72,7 +72,7 @@ export const MyListButtonWrapper = styled.div`
   }
 `;
 
-export const ListItemLoading = styled.li`
+export const ListItemLoadingWrapper = styled.li`
   height: 4rem;
   display: flex;
   justify-content: center;

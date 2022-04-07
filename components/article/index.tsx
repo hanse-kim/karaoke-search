@@ -1,5 +1,5 @@
 import React from 'react';
-import {Heading, ArticleWrapper} from './styles';
+import * as Styled from './styled';
 
 interface Props {
   title?: string;
@@ -8,9 +8,9 @@ interface Props {
 
 export const Article = ({title, children}: Props) => {
   return (
-    <ArticleWrapper>
-      <Heading>{title}</Heading>
+    <Styled.Article>
+      <Styled.Heading>{title}</Styled.Heading>
       {children}
-    </ArticleWrapper>
+    </Styled.Article>
   );
 };

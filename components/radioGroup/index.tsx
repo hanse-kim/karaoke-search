@@ -1,6 +1,6 @@
 import React, {useCallback, ChangeEventHandler} from 'react';
 import {Checkbox} from 'components/checkbox';
-import {RadioGroupWrapper} from './styles';
+import * as Styled from './styled';
 
 interface Props {
   data: {label: string; value: string}[];
@@ -12,7 +12,7 @@ export const RadioGroup = React.memo(({data, selected, onSelect}: Props) => {
   const {handleChange} = useRadioGroup(onSelect);
 
   return (
-    <RadioGroupWrapper>
+    <Styled.RadioGroup>
       {data.map(({label, value}) => (
         <Checkbox
           key={value}
@@ -21,7 +21,7 @@ export const RadioGroup = React.memo(({data, selected, onSelect}: Props) => {
           onChange={handleChange(value)}
         />
       ))}
-    </RadioGroupWrapper>
+    </Styled.RadioGroup>
   );
 });
 

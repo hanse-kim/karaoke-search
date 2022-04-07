@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const FooterWrapper = styled.footer`
+export const Footer = styled.footer`
   width: 100%;
   height: var(--footer-height);
   display: flex;

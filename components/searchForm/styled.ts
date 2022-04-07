@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export const SearchFormWrapper = styled.form`
+export const SearchForm = styled.form`
   display: flex;
   justify-content: center;
   align-items: center;

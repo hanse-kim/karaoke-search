@@ -1,5 +1,5 @@
 import React from 'react';
-import {RippleButtonWrapper} from './styles';
+import * as Styled from './styled';
 
 interface Props {
   children?: React.ReactNode;
@@ -9,9 +9,9 @@ interface Props {
 
 export const RippleButton = React.memo(({children, onClick, type}: Props) => {
   return (
-    <RippleButtonWrapper type={type} onClick={onClick}>
+    <Styled.RippleButton type={type} onClick={onClick}>
       {children}
-    </RippleButtonWrapper>
+    </Styled.RippleButton>
   );
 });
 

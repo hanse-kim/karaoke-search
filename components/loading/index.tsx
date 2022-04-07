@@ -1,11 +1,11 @@
-import {LoadingWrapper, LoadingFragment} from './styles';
+import * as Styled from './styled';
 
 export const Loading = () => {
   return (
-    <LoadingWrapper>
-      <LoadingFragment />
-      <LoadingFragment />
-      <LoadingFragment />
-    </LoadingWrapper>
+    <Styled.Loading>
+      <Styled.LoadingFragment />
+      <Styled.LoadingFragment />
+      <Styled.LoadingFragment />
+    </Styled.Loading>
   );
 };

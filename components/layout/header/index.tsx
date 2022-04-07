@@ -1,6 +1,6 @@
 import {useSearchFilter} from 'contexts/SearchFilterContext';
 import {SearchForm} from 'components/searchForm';
-import {HeaderWrapper, HeaderInner} from './styles';
+import * as Styled from './styled';
 import {Logo} from 'components/logo';
 
 interface Props {
@@ -11,11 +11,11 @@ export const Header = ({isHome}: Props) => {
   const searchFilter = useSearchFilter();
 
   return (
-    <HeaderWrapper data-is-home={isHome}>
-      <HeaderInner data-is-home={isHome}>
+    <Styled.Header data-is-home={isHome}>
+      <Styled.HeaderInner data-is-home={isHome}>
         <Logo isHome={isHome} />
         <SearchForm isHome={isHome} searchFilter={searchFilter} />
-      </HeaderInner>
-    </HeaderWrapper>
+      </Styled.HeaderInner>
+    </Styled.Header>
   );
 };

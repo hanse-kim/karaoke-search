@@ -1,10 +1,10 @@
 import NoResultSvg from 'public/assets/noResult.svg';
-import {NoResultWrapper} from './styles';
+import * as Styled from './styled';
 
 export const NoResult = () => {
   return (
-    <NoResultWrapper>
+    <Styled.NoResult>
       <NoResultSvg />
-    </NoResultWrapper>
+    </Styled.NoResult>
   );
 };

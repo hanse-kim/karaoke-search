@@ -3,7 +3,7 @@ import {Loading} from 'components/loading';
 import {useMyList} from 'contexts/MyListContext';
 import {Song} from 'types';
 import {SongItem} from './songItem';
-import {ListItemLoading, SongListWrapper} from './styles';
+import * as Styled from './styled';
 
 interface Props {
   songList: Song[];
@@ -23,16 +23,16 @@ export const SongList = ({songList, isLoading}: Props) => {
 
   if (myList === null) {
     return (
-      <SongListWrapper>
-        <ListItemLoading>
+      <Styled.SongList>
+        <Styled.ListItemLoadingWrapper>
           <Loading />
-        </ListItemLoading>
-      </SongListWrapper>
+        </Styled.ListItemLoadingWrapper>
+      </Styled.SongList>
     );
   }
 
   return (
-    <SongListWrapper>
+    <Styled.SongList>
       {songList.map((song) => (
         <SongItem
           key={song.id}
@@ -41,7 +41,9 @@ export const SongList = ({songList, isLoading}: Props) => {
           onToggleMyList={handleToggleMyListButton}
         />
       ))}
-      <ListItemLoading>{isLoading && <Loading />}</ListItemLoading>
-    </SongListWrapper>
+      <Styled.ListItemLoadingWrapper>
+        {isLoading && <Loading />}
+      </Styled.ListItemLoadingWrapper>
+    </Styled.SongList>
   );
 };

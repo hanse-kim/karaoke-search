@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const RadioGroupWrapper = styled.div`
+export const RadioGroup = styled.div`
   display: flex;
   column-gap: 1rem;
 `;

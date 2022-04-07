@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const RippleButtonWrapper = styled.button`
+export const RippleButton = styled.button`
   width: fit-content;
   height: fit-content;
   position: relative;

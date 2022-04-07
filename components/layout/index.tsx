@@ -1,7 +1,7 @@
 import React from 'react';
 import {Header} from './header';
 import {Footer} from './footer';
-import {LayoutWrapper, Main} from './styles';
+import * as Styled from './styled';
 import {SearchFilter} from 'types';
 
 interface Props {
@@ -12,10 +12,10 @@ interface Props {
 
 export const Layout = ({children, isHome}: Props) => {
   return (
-    <LayoutWrapper className='container'>
+    <Styled.Layout className='container'>
       <Header isHome={isHome} />
-      <Main>{children}</Main>
+      <Styled.Main>{children}</Styled.Main>
       <Footer isHome={isHome} />
-    </LayoutWrapper>
+    </Styled.Layout>
   );
 };

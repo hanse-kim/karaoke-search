@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const CheckboxWrapper = styled.label`
+export const Checkbox = styled.label`
   display: flex;
   align-items: center;
   column-gap: 8px;
