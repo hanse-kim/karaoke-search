@@ -36,16 +36,21 @@ export const RippleButton = styled.button`
     transition-property: background-color;
   }
 
-  &:hover {
+  &:not(:disabled):hover {
     &::before {
       width: 140%;
       height: 140%;
     }
   }
 
-  &:active {
+  &:not(:disabled):active {
     &::after {
       background-color: rgba(0, 0, 0, 0.03);
     }
+  }
+
+  &:disabled {
+    cursor: default;
+    opacity: 0.5;
   }
 `;
