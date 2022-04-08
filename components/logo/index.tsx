@@ -10,10 +10,10 @@ export const Logo = ({isHome}: Props) => {
   const [width, height] = isHome ? [275, 62] : [95, 21];
 
   return (
-    <Styled.Logo isHome={isHome}>
-      <Link href={process.env.NEXT_PUBLIC_HOME || '/'} passHref>
+    <Link href={process.env.NEXT_PUBLIC_HOME || '/'} passHref>
+      <Styled.Logo data-is-home={isHome}>
         <LogoSvg width={width} height={height} viewBox='0 0 275 62' />
-      </Link>
-    </Styled.Logo>
+      </Styled.Logo>
+    </Link>
   );
 };
