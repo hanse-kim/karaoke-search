@@ -1,17 +1,16 @@
 import {
-  useCallback,
-  useState,
   createContext,
   useContext,
   useEffect,
+  useReducer,
+  Dispatch,
 } from 'react';
 import {useStorage} from 'hooks/useStorage';
 import type {MyList, Song} from 'types';
 
 interface ContextState {
-  myList: MyList | null;
-  addSong: (song: Song) => void;
-  removeSong: (songId: string) => void;
+  myList: MyList;
+  dispatch: Dispatch<Action>;
 }
 
 interface ProviderProps {
@@ -20,32 +19,52 @@ interface ProviderProps {
 
 export const MyListContext = createContext<ContextState | null>(null);
 
-const defaultMyList: MyList = {};
+const initialState: MyList = {};
+
+type Action =
+  | {
+      type: 'ADD_SONG';
+      payload: {song: Song};
+    }
+  | {
+      type: 'REMOVE_SONG';
+      payload: {songId: string};
+    }
+  | {
+      type: 'INITIALIZE';
+      payload: {myList: MyList};
+    };
+
+const reducer = (state: MyList, action: Action) => {
+  switch (action.type) {
+    case 'ADD_SONG': {
+      const {song} = action.payload;
+      return {...state, [song.id]: {...song, createdAt: new Date().getTime()}};
+    }
+    case 'REMOVE_SONG': {
+      const {songId} = action.payload;
+      const {[songId]: toDelete, ...newState} = state;
+      return newState;
+    }
+    case 'INITIALIZE': {
+      const {myList} = action.payload;
+      return myList;
+    }
+    default: {
+      return state;
+    }
+  }
+};
 
 export const MyListProvider = ({children}: ProviderProps) => {
-  const [myList, updateMyList] = useStorage<MyList>('my-list', defaultMyList);
-  const [myListState, setMyListState] = useState<MyList | null>(null);
+  const [myList, updateMyList] = useStorage<MyList>('my-list', initialState);
+  const [myListState, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
-    if (myList !== null && myListState === null) {
-      setMyListState(myList);
+    if (myList !== null && myListState === initialState) {
+      dispatch({type: 'INITIALIZE', payload: {myList}});
     }
   }, [myList, myListState]);
-
-  const addSong = useCallback((song: Song) => {
-    setMyListState((prev) => {
-      if (prev === null) return null;
-      return {...prev, [song.id]: {...song, createdAt: new Date().getTime()}};
-    });
-  }, []);
-
-  const removeSong = useCallback((songId: string) => {
-    setMyListState((prev) => {
-      if (prev === null) return null;
-      const {[songId]: toDelete, ...newList} = prev;
-      return newList;
-    });
-  }, []);
 
   useEffect(() => {
     if (myListState === null) return;
@@ -53,7 +72,7 @@ export const MyListProvider = ({children}: ProviderProps) => {
   }, [myListState, updateMyList]);
 
   return (
-    <MyListContext.Provider value={{myList: myListState, addSong, removeSong}}>
+    <MyListContext.Provider value={{myList: myListState, dispatch}}>
       {children}
     </MyListContext.Provider>
   );
@@ -61,7 +80,6 @@ export const MyListProvider = ({children}: ProviderProps) => {
 
 export const useMyList = () => {
   const state = useContext(MyListContext);
-
   if (!state) throw new Error('Cannot find MyListProvider.');
   return state;
 };

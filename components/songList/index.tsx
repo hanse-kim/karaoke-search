@@ -11,25 +11,15 @@ interface Props {
 }
 
 export const SongList = ({songList, isLoading}: Props) => {
-  const {myList, addSong, removeSong} = useMyList();
+  const {myList, dispatch} = useMyList();
 
-  const handleToggleMyListButton = useCallback(
+  const handleToggleMyList = useCallback(
     (song: Song, inMyList?: boolean) => {
-      if (inMyList) removeSong(song.id);
-      else addSong(song);
+      if (inMyList) dispatch({type: 'REMOVE_SONG', payload: {songId: song.id}});
+      else dispatch({type: 'ADD_SONG', payload: {song}});
     },
-    [addSong, removeSong]
+    [dispatch]
   );
-
-  if (myList === null) {
-    return (
-      <Styled.SongList>
-        <Styled.ListItemLoadingWrapper>
-          <Loading />
-        </Styled.ListItemLoadingWrapper>
-      </Styled.SongList>
-    );
-  }
 
   return (
     <Styled.SongList>
@@ -38,7 +28,7 @@ export const SongList = ({songList, isLoading}: Props) => {
           key={song.id}
           song={song}
           inMyList={song.id in myList}
-          onToggleMyList={handleToggleMyListButton}
+          onToggleMyList={handleToggleMyList}
         />
       ))}
       <Styled.ListItemLoadingWrapper>

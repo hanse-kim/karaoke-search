@@ -10,7 +10,7 @@ interface Props {
 export const MyListButton = ({inMyList, onClick}: Props) => {
   return (
     <Styled.MyListButtonWrapper data-in-my-list={inMyList}>
-      <RippleButton type='button' onClick={onClick}>
+      <RippleButton onClick={onClick}>
         <IconStarSvg />
       </RippleButton>
     </Styled.MyListButtonWrapper>
