@@ -26,6 +26,17 @@ export interface SearchFilter {
   karaoke: Karaoke;
 }
 
+export type MyListKaraoke = Karaoke | 'ALL';
+export type MyListSortBy = 'TITLE' | 'NUMBER' | 'SINGER' | 'ADDED_AT';
+export type MyListSorting = 'ASC' | 'DESC';
+
+export interface MyListFilter {
+  karaoke: MyListKaraoke;
+  sortBy: MyListSortBy;
+  sorting: MyListSorting;
+  page: number;
+}
+
 export interface GQLSearchFilter extends SearchFilter {
   page: number;
 }
