@@ -1,4 +1,4 @@
-import React, {useMemo, useState} from 'react';
+import React, {useState} from 'react';
 import {useInput} from 'hooks/useInput';
 import {useRouter} from 'hooks/useRouter';
 import {RadioGroup} from 'components/radioGroup';
@@ -41,14 +41,6 @@ export const SearchForm = ({isHome, searchFilter}: Props) => {
     searchFilter
   );
 
-  const options = useMemo(() => {
-    return searchByList.map((item, index) => (
-      <option key={index} value={item.value}>
-        {item.label}
-      </option>
-    ));
-  }, []);
-
   return (
     <Styled.SearchForm data-is-home={isHome} onSubmit={handleSubmit}>
       <RadioGroup data={karaokeList} selected={karaoke} onSelect={setKaraoke} />
@@ -59,7 +51,11 @@ export const SearchForm = ({isHome, searchFilter}: Props) => {
           value={searchBy}
           onChange={handleChangeSearchBy}
         >
-          {options}
+          {searchByList.map((item, index) => (
+            <option key={index} value={item.value}>
+              {item.label}
+            </option>
+          ))}
         </Styled.SearchSelect>
         <Styled.SearchInput
           placeholder='search for...'

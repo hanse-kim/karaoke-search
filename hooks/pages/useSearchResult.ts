@@ -42,7 +42,7 @@ const useSearchResult = (searchFilter: SearchFilter) => {
     setFetchedData([]);
     setAnchor(1);
     setEnded(false);
-  }, [searchFilter]);
+  }, [searchFilter.keyword, searchFilter.karaoke, searchFilter.searchBy]);
 
   useEffect(() => {
     if (data && data.songListBySearch && !isLoading && !isEnded) {
