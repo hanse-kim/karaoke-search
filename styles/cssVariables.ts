@@ -37,6 +37,7 @@ export const cssVariables = css`
     --z-index-base: 0;
     --z-index-header: 100;
     --z-index-footer: 110;
+    --z-index-floating: 200;
   }
 
   body[data-theme='light'] {

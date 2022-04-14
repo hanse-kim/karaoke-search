@@ -3,6 +3,7 @@ import {Header} from './header';
 import {Footer} from './footer';
 import * as Styled from './styled';
 import {SearchFilter} from 'types';
+import {FloatingMenu} from 'components/floatingMenu';
 
 interface Props {
   children?: React.ReactNode;
@@ -16,6 +17,7 @@ export const Layout = ({children, isHome}: Props) => {
       <Header isHome={isHome} />
       <Styled.Main>{children}</Styled.Main>
       <Footer isHome={isHome} />
+      <FloatingMenu />
     </Styled.Layout>
   );
 };
