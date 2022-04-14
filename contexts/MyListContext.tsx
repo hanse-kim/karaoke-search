@@ -1,11 +1,5 @@
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useReducer,
-  Dispatch,
-} from 'react';
-import {useStorage} from 'hooks/useStorage';
+import {createContext, useContext, useEffect, Dispatch} from 'react';
+import {useStorageReducer} from 'hooks/useStorage';
 import type {MyList, Song} from 'types';
 
 interface ContextState {
@@ -56,23 +50,27 @@ const reducer = (state: MyList, action: Action) => {
   }
 };
 
+const initializer = (state: MyList): Action => ({
+  type: 'INITIALIZE',
+  payload: {myList: state},
+});
+
 export const MyListProvider = ({children}: ProviderProps) => {
-  const [myList, updateMyList] = useStorage<MyList>('my-list', initialState);
-  const [myListState, dispatch] = useReducer(reducer, initialState);
+  const [myList, dispatch, updateMyList] = useStorageReducer(
+    'my-list',
+    initialState,
+    reducer,
+    initializer
+  );
 
   useEffect(() => {
-    if (myList !== null && myListState === initialState) {
-      dispatch({type: 'INITIALIZE', payload: {myList}});
+    if (myList !== initialState) {
+      updateMyList(myList);
     }
-  }, [myList, myListState]);
-
-  useEffect(() => {
-    if (myListState === null) return;
-    updateMyList(myListState);
-  }, [myListState, updateMyList]);
+  }, [myList, updateMyList]);
 
   return (
-    <MyListContext.Provider value={{myList: myListState, dispatch}}>
+    <MyListContext.Provider value={{myList, dispatch}}>
       {children}
     </MyListContext.Provider>
   );

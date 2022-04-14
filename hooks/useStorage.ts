@@ -1,17 +1,24 @@
 import {
+  Dispatch,
+  Reducer,
+  SetStateAction,
   useCallback,
   useEffect,
+  useReducer,
   useRef,
   useState,
 } from 'react';
 
-export const useStorage = <T>(
+type StorageType = 'local' | 'session';
+type UpdateData<S> = (newData: S) => void;
+
+const useStorage = <T>(
   key: string,
   defaultValue: T,
-  storageType: 'local' | 'session' = 'local'
+  storageType: StorageType = 'local'
 ): [T | null, (data: T) => void] => {
-  const [state, setState] = useState<T | null>(null);
   const storage = useRef<Storage | null>(null);
+  const [dataState, setDataState] = useState<T | null>(defaultValue);
 
   useEffect(() => {
     if (storageType === 'local') {
@@ -26,9 +33,9 @@ export const useStorage = <T>(
     const data = storage.current.getItem(key);
     if (data !== null) {
       const parsed = JSON.parse(data) as T;
-      setState(parsed);
+      setDataState(parsed);
     } else {
-      setState(defaultValue);
+      setDataState(defaultValue);
     }
   }, [defaultValue, key, storage]);
 
@@ -40,5 +47,43 @@ export const useStorage = <T>(
     [key, storage]
   );
 
-  return [state, updateStorage];
+  return [dataState, updateStorage];
+};
+
+export const useStorageState = <S>(
+  key: string,
+  initialState: S,
+  storageType: StorageType = 'local'
+): [S, Dispatch<SetStateAction<S>>, UpdateData<S>] => {
+  const [data, updateData] = useStorage(key, initialState, storageType);
+  const [state, setState] = useState(initialState);
+
+  useEffect(() => {
+    if (data !== null) {
+      setState(data);
+    }
+  }, [data]);
+
+  return [state, setState, updateData];
+};
+
+export const useStorageReducer = <S, A>(
+  key: string,
+  initialState: S,
+  reducer: Reducer<S, A>,
+  initializer: (state: S) => A,
+  storageType: StorageType = 'local'
+): [S, Dispatch<A>, UpdateData<S>] => {
+  const [data, updateData] = useStorage(key, initialState, storageType);
+  const [state, dispatch] = useReducer<(state: S, action: A) => S>(
+    reducer,
+    initialState
+  );
+
+  useEffect(() => {
+    if (data === null) return;
+    dispatch(initializer(data));
+  }, [data, initializer]);
+
+  return [state, dispatch, updateData];
 };
