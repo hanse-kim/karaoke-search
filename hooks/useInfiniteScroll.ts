@@ -9,8 +9,9 @@ const useInfiniteScroll = (
   const handleScroll = _.throttle(() => {
     const element = document.documentElement;
     if (!element) return;
-    const scrollBottom =
-      element.scrollHeight - (element.scrollTop + window.innerHeight);
+    const scrollBottom = Math.round(
+      element.scrollHeight - (element.scrollTop + window.innerHeight)
+    );
     if (scrollBottom === 0 && !isStop) {
       fetchMore();
     }
