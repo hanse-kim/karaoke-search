@@ -6,7 +6,7 @@ export const Header = styled.header`
   justify-content: center;
   box-shadow: 0 0 8px 0 var(--color-shadow-strong);
 
-  transition: height 0.3s, background-color 0.3s;
+  transition: height 300ms, background-color 300ms;
   background-color: var(--color-header-bg);
 
   &[data-is-home='true'] {
@@ -23,7 +23,7 @@ export const HeaderInner = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  transition: flex-direction 0.3s;
+  transition: flex-direction 300ms;
 
   &[data-is-home='true'] {
     flex-direction: column;

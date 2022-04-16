@@ -21,18 +21,35 @@ export const FloatingMenuButton = styled.button`
   position: static;
   display: flex;
   justify-content: center;
-  align-items:center;
+  align-items: center;
   width: 48px;
   height: 48px;
   cursor: pointer;
   box-shadow: 0 0 4px var(--color-shadow-strong);
+  transition: background-color 200ms;
+
+  &:hover {
+    background-color: var(--color-floating-button-hover);
+  }
+
+  &:active {
+    background-color: var(--color-floating-button-active);
+  }
+
+  & svg {
+    transition: transform 200ms;
+  }
+
+  &:hover svg {
+    transform: scale(120%);
+  }
 `;
 
 const themeButtonInnerStyle = css`
   display: inline-flex;
   position: absolute;
   transform: scale(1);
-  transition: transform 0.2s;
+  transition: transform 200ms;
 `;
 
 export const LightButtonInner = styled.span`

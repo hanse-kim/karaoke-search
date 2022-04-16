@@ -33,7 +33,7 @@ export const SongItem = styled.div`
   background-color: var(--color-list-item-bg);
   border-radius: var(--radius-lg);
   box-shadow: 0 4px 12px var(--color-shadow-weak);
-  transition: transform 0.2s;
+  transition: transform 200ms;
   transform-origin: center right;
   will-change: transform;
 
@@ -66,6 +66,7 @@ export const Buttons = styled.div`
 
 export const MyListButtonWrapper = styled.div`
   color: var(--color-bookmark-empty);
+  transition: color 200ms;
 
   &[data-in-my-list='true'] {
     color: var(--color-bookmark);

@@ -2,7 +2,6 @@ import {useEffect, useMemo, useState} from 'react';
 import {SongList} from 'components/songList';
 import {useMyList} from 'contexts/MyListContext';
 import {
-  Karaoke,
   MyListFilter,
   MyListKaraoke,
   MyListSong,
@@ -13,6 +12,7 @@ import * as Styled from './styled';
 import {usePagination} from 'hooks/usePagenation';
 import {PageNav} from 'components/pageNav';
 import {PageButton} from './pageButton';
+import {NoMyList} from 'components/noResult';
 
 interface Props {
   filter: MyListFilter;
@@ -49,9 +49,26 @@ export const MyList = ({filter}: Props) => {
     setSongList(Object.values(myList));
   }, [myList, songList]);
 
+  if (filteredSongList.length === 0) {
+    return (
+      <Styled.MyList>
+        <Filter
+          filter={filter}
+          sortByList={sortByList}
+          karaokeList={karaokeList}
+        />
+        <NoMyList />
+      </Styled.MyList>
+    );
+  }
+
   return (
     <Styled.MyList>
-      <Filter filter={filter} sortByList={sortByList} karaokeList={karaokeList} />
+      <Filter
+        filter={filter}
+        sortByList={sortByList}
+        karaokeList={karaokeList}
+      />
       <SongList songList={paginatedData} />
       <PageNav
         currPage={currPage}
@@ -64,12 +81,9 @@ export const MyList = ({filter}: Props) => {
   );
 };
 
-const useFiltering = (
-  filter: MyListFilter,
-  songList: MyListSong[]
-) => {
+const useFiltering = (filter: MyListFilter, songList: MyListSong[]) => {
   const filteredSongList = useMemo(() => {
-    return songList
+    const sorted = songList
       .filter((song) => {
         return filter.karaoke === 'ALL' || song.karaoke === filter.karaoke;
       })
@@ -82,12 +96,15 @@ const useFiltering = (
           }
           case 'SINGER': {
             compareValue = a.singer.localeCompare(b.singer);
+            break;
           }
           case 'NUMBER': {
             compareValue = a.number.localeCompare(b.number);
+            break;
           }
           case 'ADDED_AT': {
             compareValue = a.createdAt - b.createdAt;
+            break;
           }
         }
 
@@ -97,6 +114,8 @@ const useFiltering = (
 
         return compareValue;
       });
+
+    return sorted;
   }, [filter.karaoke, filter.sortBy, filter.sorting, songList]);
 
   return {filteredSongList};

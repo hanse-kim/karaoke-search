@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, {keyframes} from 'styled-components';
 
 export const Checkbox = styled.label`
   display: flex;
@@ -22,6 +22,32 @@ export const CheckboxController = styled.span`
   border: 2px solid var(--color-input-border);
   border-radius: var(--radius-md);
   background-color: var(--color-input-bg);
+  transition: background-color 200ms;
+
+  &:hover {
+    background-color: var(--color-input-bg-hover);
+  }
+
+  &:active {
+    background-color: var(--color-input-bg-active);
+  }
+`;
+
+const checkAnimation = keyframes`
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  80% {
+    transform: scale(110%);
+    opacity: 100%;
+  }
+
+  to {
+    transform: scale(100%);
+    opacity: 100%;
+  }
 `;
 
 export const CheckWrapper = styled.span`
@@ -31,4 +57,6 @@ export const CheckWrapper = styled.span`
   color: var(--color-input-content);
   position: absolute;
   top: -1px;
+
+  animation: ${checkAnimation} 200ms forwards;
 `;
