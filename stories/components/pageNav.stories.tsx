@@ -16,4 +16,4 @@ const Template: ComponentStory<typeof PageNav> = (args) => (
 );
 
 export const Example = Template.bind({});
-Example.args = {currPage: 1, maxPage: 11, setPage: (page: number) => {}};
+Example.args = {currPage: 1, setPage: (page: number) => {}};
