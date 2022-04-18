@@ -6,20 +6,14 @@ import IconLightSvg from 'public/assets/iconLight.svg';
 import IconDarkSvg from 'public/assets/iconDark.svg';
 
 type Theme = 'light' | 'dark';
+export const STORAGE_KEY_THEME = 'theme';
+export const INITIAL_THEME: Theme = 'light';
 
 export const ThemeButton = () => {
-  const {theme, setTheme} = useTheme();
+  const {handleToggleTheme} = useTheme();
 
   return (
-    <FloatingMenuButton
-      onClick={() => {
-        setTheme((prevTheme) => {
-          const newTheme = prevTheme === 'light' ? 'dark' : 'light';
-          document.body.dataset.theme = newTheme;
-          return newTheme;
-        });
-      }}
-    >
+    <FloatingMenuButton onClick={handleToggleTheme}>
       <Styled.LightButtonInner>
         <IconLightSvg />
       </Styled.LightButtonInner>
@@ -32,17 +26,22 @@ export const ThemeButton = () => {
 
 const useTheme = () => {
   const [theme, setTheme, updateTheme] = useStorageState<Theme>(
-    'theme',
-    'light'
+    STORAGE_KEY_THEME,
+    INITIAL_THEME
   );
 
   useEffect(() => {
     document.body.dataset.theme = theme;
-  }, [theme]);
-
-  useEffect(() => {
     updateTheme(theme);
   }, [theme, updateTheme]);
 
-  return {theme, setTheme};
+  const handleToggleTheme = () => {
+    setTheme((currTheme) => {
+      if (currTheme === 'dark') return 'light';
+      if (currTheme === 'light') return 'dark';
+      return INITIAL_THEME;
+    });
+  };
+
+  return {handleToggleTheme};
 };

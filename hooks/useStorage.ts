@@ -50,7 +50,7 @@ const useStorage = <T>(
   return [dataState, updateStorage];
 };
 
-export const useStorageState = <S>(
+export const useStorageState = <S = unknown>(
   key: string,
   initialState: S,
   storageType: StorageType = 'local'

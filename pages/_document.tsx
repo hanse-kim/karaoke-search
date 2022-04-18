@@ -7,6 +7,11 @@ import Document, {
   DocumentContext,
 } from 'next/document';
 import {ServerStyleSheet} from 'styled-components';
+import {
+  INITIAL_THEME,
+  STORAGE_KEY_THEME,
+} from 'components/floatingMenu/themeButton';
+// import Script from 'next/script';
 
 class MyDocument extends Document {
   static async getInitialProps(context: DocumentContext) {
@@ -53,7 +58,13 @@ class MyDocument extends Document {
             rel='stylesheet'
           />
         </Head>
-        <body data-theme='light'>
+        <body>
+          <script
+            id='initialize-theme'
+            dangerouslySetInnerHTML={{
+              __html: `document.body.dataset.theme = JSON.parse(localStorage.getItem("${STORAGE_KEY_THEME}") || '"${INITIAL_THEME}"');`,
+            }}
+          />
           <Main />
           <NextScript />
         </body>

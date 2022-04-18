@@ -4,7 +4,7 @@ import type {AppProps} from 'next/app';
 import {ApolloClient, ApolloProvider, InMemoryCache} from '@apollo/client';
 import {SearchFilterProvider} from 'contexts/SearchFilterContext';
 import {Layout} from 'components/layout';
-import GlobalStyle from 'styles/GlobalStyle';
+import GlobalStyle from 'styles/globalStyle';
 
 const client = new ApolloClient({
   uri: '/api/graphql',
