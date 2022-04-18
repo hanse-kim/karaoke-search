@@ -39,7 +39,6 @@ export const MyList = ({filter}: Props) => {
     filteredSongList,
     {
       withRouting: true,
-      itemsPerPage: 5,
       initialPage: filter.page,
     }
   );
