@@ -44,9 +44,9 @@ export const MyList = ({filter}: Props) => {
   );
 
   useEffect(() => {
-    if (songList.length) return;
+    if (songList.length > 0) return;
     setSongList(Object.values(myList));
-  }, [myList, songList]);
+  }, [myList, songList.length]);
 
   if (filteredSongList.length === 0) {
     return (
