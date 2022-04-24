@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import {fadeIn} from 'styles/animation';
 
 export const NoResult = styled.div`
-  color: var(--color-dark-gray);
+  color: var(--color-no-result);
   height: 50vh;
   display: flex;
   justify-content: center;

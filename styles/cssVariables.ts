@@ -87,6 +87,8 @@ export const cssVariables = css`
     --color-button-selected-bg-hover: var(--color-main-hover);
     --color-button-selected-bg-active: var(--color-main-active);
     --color-button-selected-text: var(--color-white);
+
+    --color-no-result: var(--color-dark-gray);
   }
 
   body[data-theme='dark'] {
@@ -133,5 +135,7 @@ export const cssVariables = css`
     --color-button-selected-bg-hover: var(--color-main-hover);
     --color-button-selected-bg-active: var(--color-main-active);
     --color-button-selected-text: var(--color-black);
+
+    --color-no-result: var(--color-main);
   }
 `;
