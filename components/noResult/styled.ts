@@ -11,4 +11,15 @@ export const NoResult = styled.div`
   row-gap: 1.5rem;
   font-size: var(--font-size-xl);
   animation: ${fadeIn} 800ms backwards;
+
+  @media screen and (max-width: 767px) {
+    & {
+      font-size: var(--font-size-lg);
+      row-gap: 0;
+    }
+
+    & > svg {
+      transform: scale(0.75);
+    }
+  }
 `;

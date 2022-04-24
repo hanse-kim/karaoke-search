@@ -11,13 +11,21 @@ export const SearchForm = styled.form`
     flex-direction: column;
     row-gap: 1rem;
   }
+
+  @media screen and (max-width: 767px) {
+    & {
+      width: 100%;
+      flex-direction: column;
+      row-gap: 0.25rem;
+    }
+  }
 `;
 
 export const SearchInputWrapper = React.memo(styled.div`
   width: 22.5rem;
   display: flex;
   align-items: center;
-  padding: 4px 16px;
+  padding: 0.25rem 1rem;
   column-gap: 1rem;
 
   background-color: var(--color-input-bg);
@@ -27,6 +35,12 @@ export const SearchInputWrapper = React.memo(styled.div`
   &[data-is-home='true'] {
     border: none;
     box-shadow: 0 0 0.25rem var(--color-shadow-strong);
+  }
+
+  @media screen and (max-width: 767px) {
+    & {
+      max-width: 100%;
+    }
   }
 `);
 

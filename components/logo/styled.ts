@@ -47,16 +47,35 @@ const logoHoverAnimatnion = keyframes`
 `;
 
 export const Logo = styled.a<{isHome?: boolean}>`
+  width: 95px;
+  height: 21px;
   color: var(--color-logo);
   display: flex;
   transform: none;
   transition: transform 200ms;
 
   &[data-is-home='true'] {
+    width: 275px;
+    height: 62px;
     color: var(--color-home-logo);
   }
 
-  &:hover {
-    animation: ${logoHoverAnimatnion} 800ms forwards;
+  & > svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  @media screen and (max-width: 767px) {
+    &[data-is-home='true'] {
+      width: 206px;
+      height: 47px;
+      color: var(--color-home-logo);
+    }
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      animation: ${logoHoverAnimatnion} 800ms forwards;
+    }
   }
 `;

@@ -1,9 +1,9 @@
-import styled, { css } from "styled-components";
+import styled, {css} from 'styled-components';
 
 export const FloatingMenu = styled.nav`
   position: fixed;
-  right: 56px;
-  bottom: 48px;
+  right: 3.5rem;
+  bottom: 3rem;
   display: flex;
   column-gap: 12px;
   padding: 12px;
@@ -11,6 +11,15 @@ export const FloatingMenu = styled.nav`
   box-shadow: 0 2px 8px var(--color-shadow-strong);
   background-color: var(--color-floating-bg);
   z-index: var(--z-index-floating);
+
+  @media screen and (max-width: 767px) {
+    & {
+      right: 1rem;
+      bottom: 1rem;
+      column-gap: 0.5rem;
+      padding: 0.5rem;
+    }
+  }
 `;
 
 export const FloatingMenuButton = styled.button`
@@ -28,20 +37,29 @@ export const FloatingMenuButton = styled.button`
   box-shadow: 0 0 4px var(--color-shadow-strong);
   transition: background-color 200ms;
 
-  &:hover {
-    background-color: var(--color-floating-button-hover);
-  }
-
-  &:active {
-    background-color: var(--color-floating-button-active);
-  }
-
   & svg {
     transition: transform 200ms;
   }
 
-  &:hover svg {
-    transform: scale(120%);
+  @media (hover: hover) {
+    &:hover {
+      background-color: var(--color-floating-button-hover);
+    }
+
+    &:hover svg {
+      transform: scale(120%);
+    }
+
+    &:active {
+      background-color: var(--color-floating-button-active);
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    & {
+      width: 36px;
+      height: 36px;
+    }
   }
 `;
 
@@ -55,7 +73,7 @@ const themeButtonInnerStyle = css`
 export const LightButtonInner = styled.span`
   ${themeButtonInnerStyle};
 
-  [data-theme="dark"] & {
+  [data-theme='dark'] & {
     transform: scale(0);
   }
 `;

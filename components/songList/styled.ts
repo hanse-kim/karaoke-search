@@ -37,8 +37,17 @@ export const SongItem = styled.div`
   transform-origin: center right;
   will-change: transform;
 
-  &:hover {
-    transform: scale(1.05);
+  @media (hover: hover) {
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    & {
+      column-gap: 1rem;
+      padding: 0.25rem 0.75rem;
+    }
   }
 `;
 
@@ -46,12 +55,25 @@ export const SongNumber = styled.div`
   ${largeText};
   width: 4rem;
   text-align: center;
+
+  @media screen and (max-width: 767px) {
+    & {
+      font-size: var(--font-size-md);
+    }
+  }
 `;
 
 export const SongInfo = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
+  overflow: hidden;
+`;
+
+export const SongTitle = styled.div`
+  white-space: nowrap;
+  overflow:hidden;
+  text-overflow: ellipsis;
 `;
 
 export const Singer = styled.div`

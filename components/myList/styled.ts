@@ -48,6 +48,12 @@ export const PageNav = styled.nav`
   column-gap: 8px;
   justify-content: center;
   align-items: center;
+
+  @media screen and (max-width: 767px) {
+    & {
+      transform: translateY(-150%);
+    }
+  }
 `;
 
 export const PageButton = styled(RaisedButton)`

@@ -15,6 +15,12 @@ export const Footer = styled.footer`
     position: static;
     z-index: var(--z-index-footer);
   }
+
+  @media screen and (max-width: 767px) {
+    & {
+      padding-bottom: 60px;
+    }
+  }
 `;
 
 export const FooterLink = styled.a`

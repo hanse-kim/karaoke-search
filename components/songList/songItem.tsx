@@ -20,7 +20,7 @@ export const SongItem = React.memo(
         <Styled.SongItem>
           <Styled.SongNumber>{song.number}</Styled.SongNumber>
           <Styled.SongInfo>
-            <div>{song.title}</div>
+            <Styled.SongTitle>{song.title}</Styled.SongTitle>
             <Styled.Singer>{song.singer}</Styled.Singer>
           </Styled.SongInfo>
           <Styled.Buttons>

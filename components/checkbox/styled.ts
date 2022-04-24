@@ -24,12 +24,14 @@ export const CheckboxController = styled.span`
   background-color: var(--color-input-bg);
   transition: background-color 200ms;
 
-  &:hover {
-    background-color: var(--color-input-bg-hover);
-  }
+  @media (hover: hover) {
+    &:hover {
+      background-color: var(--color-input-bg-hover);
+    }
 
-  &:active {
-    background-color: var(--color-input-bg-active);
+    &:active {
+      background-color: var(--color-input-bg-active);
+    }
   }
 `;
 

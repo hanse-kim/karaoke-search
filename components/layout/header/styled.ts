@@ -16,6 +16,13 @@ export const Header = styled.header`
     background-color: var(--color-home-bg);
     padding-bottom: var(--footer-height);
   }
+
+  @media screen and (max-width: 767px) {
+    & {
+      height: fit-content;
+      padding: 0.5rem;
+    }
+  }
 `;
 
 export const HeaderInner = styled.div`
@@ -29,5 +36,13 @@ export const HeaderInner = styled.div`
     flex-direction: column;
     justify-content: center;
     row-gap: 3rem;
+  }
+
+  @media screen and (max-width: 767px) {
+    & {
+      flex-direction: column;
+      justify-content: center;
+      row-gap: 0.5rem;
+    }
   }
 `;

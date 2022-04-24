@@ -7,6 +7,7 @@ export const cssReset = css`
     font-weight: 400;
     line-height: 1.55;
     -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
   }
 
   *,

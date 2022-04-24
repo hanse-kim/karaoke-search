@@ -47,6 +47,14 @@ export const cssVariables = css`
     --z-index-floating: 200;
   }
 
+  @media screen and (max-width: 767px) {
+    :root {
+      --font-size-heading: 1.5rem;
+      --screen-width: 100%;
+      --footer-height: 100px;
+    }
+  }
+
   body[data-theme='light'] {
     --color-home-bg: var(--color-main);
     --color-home-logo: var(--color-white);
