@@ -21,13 +21,15 @@ export interface SearchFilterObject {
 }
 
 export interface SearchFilter {
-  searchBy: 'NUMBER' | 'TITLE' | 'SINGER';
+  searchBy: SearchBy;
   keyword: string;
   karaoke: Karaoke;
 }
 
+export type SearchBy = 'NUMBER' | 'TITLE' | 'SINGER';
+
 export type MyListKaraoke = Karaoke | 'ALL';
-export type MyListSortBy = 'TITLE' | 'NUMBER' | 'SINGER' | 'ADDED_AT';
+export type MyListSortBy = SearchBy | 'ADDED_AT';
 export type MyListSorting = 'ASC' | 'DESC';
 
 export interface MyListFilter {
