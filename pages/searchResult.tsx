@@ -1,4 +1,5 @@
 import {Article} from 'components/article';
+import {Loading} from 'components/loading';
 import {NoResult} from 'components/noResult';
 import {SongList} from 'components/songList';
 import {MyListProvider} from 'contexts/MyListContext';
@@ -20,6 +21,10 @@ const SearchResultPage = ({}: Props) => {
   const searchResultTitle = getSearchResultTitle(
     router.query as any as SearchFilter
   );
+
+  if (!router.isReady) {
+    return null;
+  }
 
   if (!isLoading && songList.length === 0) {
     return (
