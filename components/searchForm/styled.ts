@@ -7,7 +7,7 @@ export const SearchForm = styled.form`
   align-items: center;
   column-gap: 1rem;
 
-  &[data-is-home='true'] {
+  [data-is-home='true'] & {
     flex-direction: column;
     row-gap: 1rem;
   }
@@ -32,7 +32,7 @@ export const SearchInputWrapper = React.memo(styled.div`
   border: 2px solid var(--color-input-border);
   border-radius: var(--radius-full);
 
-  &[data-is-home='true'] {
+  [data-is-home='true'] & {
     border: none;
     box-shadow: 0 0 0.25rem var(--color-shadow-strong);
   }

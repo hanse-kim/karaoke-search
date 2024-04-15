@@ -32,7 +32,7 @@ export const HeaderInner = styled.div`
   justify-content: space-between;
   transition: flex-direction 300ms;
 
-  &[data-is-home='true'] {
+  [data-is-home='true'] > & {
     flex-direction: column;
     justify-content: center;
     row-gap: 3rem;

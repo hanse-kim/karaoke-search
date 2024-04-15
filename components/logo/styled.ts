@@ -54,7 +54,7 @@ export const Logo = styled.a<{isHome?: boolean}>`
   transform: none;
   transition: transform 200ms;
 
-  &[data-is-home='true'] {
+  [data-is-home='true'] & {
     width: 275px;
     height: 62px;
     color: var(--color-home-logo);
@@ -66,7 +66,7 @@ export const Logo = styled.a<{isHome?: boolean}>`
   }
 
   @media screen and (max-width: 767px) {
-    &[data-is-home='true'] {
+    [data-is-home='true'] & {
       width: 206px;
       height: 47px;
       color: var(--color-home-logo);
