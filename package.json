@@ -1,9 +1,9 @@
 {
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3600",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 4600",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
